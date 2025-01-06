@@ -447,7 +447,7 @@ Es existiert (nach der zweiten Definition) also genau eine Zahl $z$ in $\N$, sod
         \begin{equation*}
             \forall i \in \{1, 2, \dots\} \vst \{t_i, t_i\} \notin H
         \end{equation*}
-        \item Da das Händegeben symmetrisch ist, gilt:
+        \item Da das Hände geben symmetrisch ist, gilt:
         \begin{equation*}
             \text{Falls } (t_i, t_j \in H), \text{dann ist auch } (t_j, t_i \in H)
         \end{equation*}
@@ -900,7 +900,7 @@ ist surjektiv, nicht injektiv, da $f(0) = f(1)$
 
 \de{Der \red{Unvollständigkeitssatz} besagt, dass mit ZF nicht gezeigt werden kann, dass ZF widerspruchsfrei ist.}
 
-\subsection{Die Kontinuumshypothese}
+\subsection{Die Kontinuums-Hypothese}
 
 \de{Die \red{Kontinuumshypothese} besagt, dass es keine Menge $M$ gibt, sodass $|\N| < |M| < |P(\N)|$ gilt.}
 \gray{Die Kontinuumshypothese lässt sich weder beweisen, noch wiederlegen.}
@@ -923,7 +923,7 @@ Es gibt zwei gebräuchliche Schreibweisen für Permutationen:
             2 & 3 & 1 & 4
         \end{pmatrix}$
     \end{tabular}
-    \item Zyklenschreibweise: $\pi = (1 \; 2 \; 3)(4) = (1 \; 2 \; 3)$, wobei Zyklen disjunkt sind 
+    \item Zyklen-Schreibweise: $\pi = (1 \; 2 \; 3)(4) = (1 \; 2 \; 3)$, wobei Zyklen disjunkt sind 
 \end{itemize}
 \begin{center}
     \begin{tikzpicture}
@@ -1129,7 +1129,7 @@ $\forall x,y,z \in \{0, 1\}$ gilt:
         \text{Idempotenz} & x \land x = x & x \lor x = x\\
         \text{Kommutativität} & x \land y = y \land x & x \lor y = y \lor x\\
         \text{Assoziativität} & (x \land y) \land z = x \land (y \land z) & (x \lor y) \lor z = x \lor (y \lor z)\\
-        \text{De-Morgansche Gesetze} & \neg(x \land y) = \neg x \lor \neg y & \neg(x \lor y) = \neg x \land \neg y\\
+        \text{De-Morgansche Gesetze} & \neg(x \land y) = \neg x \lor \neg y & \neg(x \lor y) = \neg x \land \neg y
     \end{array}
 \end{equation*}
 
@@ -1440,7 +1440,7 @@ Multiplikation:
     \cdot: \N \times \N \to \N, n \cdot 0 = 0 \text{ und } n \cdot m^+ = n \cdot m + n
 \]
 
-Es gelten die bekannten Kommutativitäts-, Assoziativitäts- und \\Distributivitätsgesetze.
+Es gelten die bekannten Kommutativität-, Assoziativität- und \\Distributivitätsgesetze.
 
 \[
     \N = \{0, 1, 2, 3, \dots\}
@@ -1979,7 +1979,7 @@ Zwischenergebnisse Modulo $100001$ berechnen
     \item Division mit Rest (Modulo):\\
     $a,b \in \N$ mit $b \neq 0$. Was ist $a \mod b$?\\
     Mit Schulmathematik polynomiell lösbar.
-    \item Primzahltest:\\
+    \item Primzahl-Test:\\
     $n \in \N$. Ist $n$ eine Primzahl?\\
     \underline{2002:} "Primes is in P" $\implies$ polynomiell lösbar
     \item geg: $n \in \N$ und $i \in \N$. Ist das $i$-te Bit des größten Primfaktors von $n$ eine $1$?\\
@@ -2200,7 +2200,7 @@ $\pi_2 = \begin{pmatrix}
 \pr{
     Falls $d = \ggt(a,n) > 1$, dann ist $a, 2a, \dots$ immer durch $d$ teilbar, also ist $1 \notin \{a,2a,\dots\}$ und ist kein Erzeuger von $\Z_n$.
 
-    Falls $\ggt(a,n) = 1$, dann gibt es nach dem Lemma von Bézout:
+    Falls $\ggt(a,n) = 1$, dann gibt es nach dem Lemma von Bezout:
     \begin{align*}
         k,l \in \Z&: 1 = ka + ln\\
         \text{Für } b \in \Z_n&: b = b \cdot ka + \underbrace{b \cdot ln }_{\mod n = 0}\text{ und } \underbrace{b = a + a + \dots + a}_{b \cdot k-Mal}
@@ -2226,7 +2226,7 @@ $\pi_2 = \begin{pmatrix}
 
 \subsection{Der diskrete Logarithmus}
 
-Sei $p$ eine Primzahl und $g$ eine Primitivwurzel von $\Z_p^*$, also $\Z_p^*$ zyklisch.\\
+Sei $p$ eine Primzahl und $g$ eine Primitiv-Wurzel von $\Z_p^*$, also $\Z_p^*$ zyklisch.\\
 Dann ist $\exp_g: Z_{p-1} \to \Z_p^*: k \mapsto g^k$ ein Isomorphismus.
 
 \de{
@@ -2239,7 +2239,7 @@ Dann ist $\exp_g: Z_{p-1} \to \Z_p^*: k \mapsto g^k$ ein Isomorphismus.
 
 Zur Lösung des diskreten Logarithmus ist kein Algorithmus in polynomieller Laufzeit bekannt:
 
-Eingabe: Primzahl $p$, Primitivwurzel $g$, $a \in \Z_p^*$\\
+Eingabe: Primzahl $p$, Primitiv-Wurzel $g$, $a \in \Z_p^*$\\
 Ausgabe: $log_x(a) \in \Z_{p-1}$
 
 Deshalb wird $\exp_p$ auch Einbahnfunktion genannt.\\
@@ -2249,7 +2249,7 @@ Beides sind Grundlagen für Verschlüsselungstechniken.
 
 \subsubsection{Beispiel: Diffie-Hellmann-Merkle-Verfahren}
 
-Es wird öffentlich eine Primzahl $p$ und eine Primitivwurzel $g$ aus $\Z_p^*$ gewählt.
+Es wird öffentlich eine Primzahl $p$ und eine Primitiv-Wurzel $g$ aus $\Z_p^*$ gewählt.
 
 \blue{Person 1 wählt eine zufällige Zahl $a \in \Z_{p-1}$ und berechnet $a' = g^a \mod p$}\\
 \red{Person 2 wählt eine zufällige Zahl $b \in \Z_{p-1}$ und berechnet $b' = g^b \mod p$}
@@ -2301,7 +2301,7 @@ $(m_1, \dots, m_l) = (c_1 + (c_1 + m_1 \mod 2), \dots, c_l + (c_l + m_l \mod 2))
 \ex \begin{itemize}
     \item Wenn $(x_1 \; \dots \; x_n)$ ein $k$-Zyklus in $S_n$ ist, dann ist die Ordnung von $(x_1 \; \dots \; x_k)$ gleich k
     \item Die Ordnung von $2$ in $\Z$ ist unendlich
-    \item Wenn $g$ eine Primitivwurzel mod $p$ prim ist, dann ist die Ordnung von $g$ gleich $p-1$
+    \item Wenn $g$ eine Primitiv-Wurzel mod $p$ prim ist, dann ist die Ordnung von $g$ gleich $p-1$
     \item Sei ein Element von $S_n$: $\sigma = (x_1 \; \dots \; x_k) \; (y_1 \; \dots \; y_l)$ in Zyklenschreibweise, dann ist die Ordnung von $\sigma$ das kleinste gemeinsame Vielfache von $k$ und $l$
 \end{itemize}
 
@@ -2500,7 +2500,7 @@ Wenn der Graph aus dem Kontext geschlossen werden kann, schreiben wir auch nur $
 Diese Graphen heißen schlicht bzw. einfach und ungerichtet.
 
 \ex \begin{itemize}
-    \item Knoten: Facebookprofile\\
+    \item Knoten: Facebook-Profile\\
     Kanten: $\{a,b\} \in E$, falls $a,b$ befreundet sind
     \item Knoten: Schauspieler\\
     Kanten: $\{a,b\} \in E$, falls es einen film gibt, in dem beide mitspielen
@@ -2927,12 +2927,141 @@ Graph $G_B = (V_B, E_B)$ mit
     Dann ist die maximale Anzahl paarweise disjunkter A-B-Pfade gleich der kleinsten Zahl $k_{G,A-B}$, sodass es in $G$ eine Menge $X \subseteq U$ der Kardinalität $K_{G,A-B}$ gibt, die $A$ von $B$ trennt.
 }
 
+\pr{
+    \begin{itemize}
+        \item["$\le$"] Da jeder A-B-Pfad durch X geht, wenn X A von B trennt, kann es nicht mehr als $k_{G,A-B}$ disjunkte A-B-Pfade geben.
+        \item["$\ge$"] d.h., es gibt $k_{G,A-B}$ disjunkte A-B-Pfade.\\
+        Induktion über $|E|$:
+
+        \underline{$A_n$} ist die Aussage "In einem endlichen Graphen mit $|E| = n$ Kanten gilt:\\
+        $\forall A,B \subseteq V(H) \exists k_{G,A-B}$ disjunkte A-B-Pfade"
+
+        \underline{$IA$} $|E| = 0$: Ein A-B-Pfad ist ein Pfad der Form $(v)$ mit $v \in A \cap B$.
+        Außerdem ist die eindeutig minimale Menge, die A von B trennt, $A \cap B$.\\
+        Somit gibt es $|A \cap B|$ disjunkte A-B-Pfade und $A_0$ ist bewiesen.
+        
+        \underline{$IS$} Sei $n \in \N$, sodass $A_n$ gilt.\\ Sei $G = (V,E)$ mit $|E| = n+1$. Sei $A,B \subseteq V$.\\
+        Wir müssen $k_{G,A-B}$ disjunkte A-B-Pfade finden.\\
+        Sei $e \in E$, betrachte $G' = (V, E \backslash \{e\})$. Sei $e = \{v_1, v_2\}$.
+
+        \underline{Fall 1}: $k_{G,A-B} = k_{G',A-B}$, d.h. eine minimal trennende Menge in $G$ ist auch eine minimal trennende Menge in $G'$.\\
+        Nach \underline{IV} gibt es $k_{G',A-B}$ disjunkte A-B-Pfade in $G'$, welche auch disjunkte A-B-Pfade in $G$ sind. Das zeigt Fall 1.
+
+        \underline{Fall 2} $k_{G',A-B} < k_{G,A-B}$. Sei $S \subseteq V$ minimal, sodass S in G' A von B trennt. D.h. in G enthält jeder A-B-Pfad einen Knoten uas S oder die Kante e.\\
+        Es gilt: $|S| = k_{G,A-B} - 1$, denn in G trennt $S \cup \{v_1\}$ A von B.\\
+        O.B.d.A. gibt es in G' einen $A-\{v_1\}-Pfad$ und einen $B-\{v_2\}-Pfad$, die keinen Knoten aus S enthalten.\\
+        Sei $S_i:=S \cup \{v_i\}$ mit $i = 1,2$. Sei $T \subseteq V$ mit $|T| = k_{G',A-B}$ und T trennt A von $S_1$ in G'. Dann trennt T auch A von $S_1$ in G, also auch A von B in G und somit $|T| \ge k_{G,A-B}$\\
+        Nach \underline{IV} gibt es $k_{G,A-B}$ disjunkte $A-S_1-Pfade$ in G' und deren Endpunkte sind genau die verschiedenen Knoten aus $S_1$.\\
+        Dasselbe gilt mit B und $S_2$.\\
+        Zusammengesetzt gibt es genau $k_{G,A-B}$ disjunkte A-B-Pfade in G.
+    \end{itemize}
+}
 
 \co{
     Sei $G=(V,E)$ ein endlicher Graph und $a,b \in U$ mit $\{a,b\} \notin E$.\\
     Dann ist die maximale Anzahl paarweise unabhängiger Pfade von $a$ nach $b$ gleich der Größe der kleinsten Teilmenge $V \backslash \{a,b\}$, die $\{a\}$ von $\{b\}$ in $G$ trennt.
 }
 
+\pr{
+    Wenn $S \subseteq V \backslash \{A,B\}$ die Mengen $\{a\}$ und $\{b\}$ trennt, muss jeder Weg von A nach B durch S laufen, es kann also höchstens $|S|$ disjunkte Pfade geben.\\
+    Falls $\{a\}$ und $\{b\}$ sich in G  durch k Knoten aus $V \backslash \{A,B\}$ trennen lassen:\\
+    Sei $A \subseteq V$ die Menge der Nachbarn von a und $B \subseteq V$ die Menge der Nachbarn von b.\\
+    Nach Annahme ist $a,b \notin A \cup B$. Dann lassen sich A und B nicht durch k Knoten trennen.
+
+    Nach dem Satz von Menger gibt es k disjunkte A-B-Pfade. Dies lässt sich zu k unabhängigen $\{a\}-\{b\}-Pfaden$ verlängern.
+}
+
+\newpage
+\subsection{k-facher Zusammenhang}
+
+\de{
+    Ein Graph $G=(V,E)$ heißt \red{k-fach zusammenhängend}, falls\\
+    $|V| \ge k+1$ und $\forall X \subseteq V$ mit $|X| < k$ ist\\
+    $G-V := G[V \backslash X]$ zusammenhängend.
+}
+
+\co{
+    Sei $k \ge 1$. Ein endlicher Graph mit $V \ge k+1$ ist genau dann k-fach zusammenhängend, wenn er für alle $a,b \in V$ mindestens k unabhängige Pfade von a nach b hat.
+}
+
+\ex Jeder Kreis ist 2-fach zusammenhängend.
+
+\pr{
+    \underline{Richtung "$\impliedby$":} Wenn es $w_1, \dots, w_k$ unabhängige Pfade von a nach b gibt, dann können wir aus (k-1)-vielen dieser Wege einen Knoten $\ne a,b$ herauslöschen und es gibt immer noch einen Weg von a nach b.\\
+    \underline{Richtung "$\implies$":} Falls $\{a,b\} \notin E$, dann sind wir nach dem vorher bewiesenen Korollar fertig.
+    Sonst sei $e:=\{a,b\} \in E$ und\\
+    $G' = (V, E \backslash e)$\\
+    Falls es in G' k-1 unabhängige Pfade von a nach b gibt, dann gibt es auch in G k unabhängige Pfade von a nach b.\\
+    Somit gibt es nach dem vorherigen Korollar ein $X \subseteq V \backslash \{a,b\}$ mit $|X| \le k-1$ und  trennt $\{a\}$ von $\{b\}$ in G'.
+
+    Sei $v \in V \backslash \{X \cup e\}$, dann trennt X entweder $\{a\}$ oder $\{b\}$ von $\{v\}$ in G'.\\
+    Also gibt es in $G \backslash \{b \cup X\}$ keinen Pfad von a nach v.
+}
+
+\subsection{Kantenzusammenhang}
+
+\de{
+    Sei $G=(V,E)$ ein Graph. G heißt \red{k-fach kantenzusammenhängend}, falls $\forall F \subseteq E$ mit $|F| < k$ der Graph $(V, E \backslash F)$ zusammenhängend ist.
+}
+
+\ex $C_n$ ist 2-fach kantenzusammenhängend
+
+\newpage
+\de{
+    Seien $a,B \in V$ und $F \subseteq E$. Dann \red{trennt} F a von b, falls es in $(V, E \backslash F)$ keinen Kantenzug von a nach b gibt.\\
+    Zwei Kantenzüge $(u_1, \dots, u_l)$ und $(v_1, \dots, v_k)$ von a nach b heißen \red{kantendisjunkt}, falls sie keine gemeinsame Kante haben.
+}
+
+\de{
+    Sei $G=(V,E)$ ein Graph. Der \red{Kantengraph} von G ist der Graph $L(G) := (V',E')$ mit $V' = E$ und $E' = \{\{e,e'\} \in \vvec{E}{2} \st |e \cap e'| = 1\}$
+}
+
+\prop{
+    Sei $G=(V,E)$ ein endlicher Graph, $a,b \in V$.\\
+    Dann ist die maximale Anzahl kantendisjunkter Kantenzüge von a nach b gleich der minimalen Größe einer Kantenmenge, die a von b trennt.
+}
+
+\pr{
+    \underline{"$\le$"} Wenn es k kantendisjunkte Kantenzüge von a nach b gibt, muss man mindestens k Kanten entfernen, um a von b zu trennen.
+
+    \underline{"$\ge$"} Betrachte L(G).\\
+    Sei $A := \{u \in E \st a \in U\}$, $B := \{u \in E \st b \in U\}$\\
+    Wenn wir in G mindestens k Knoten entfernen müssen, um a von b zu trennen, müssen wir mindestens k Knoten in L(G) entfernen, um A von B zu trennen. Fertig mittels Satz von Menger.
+}
+
+\co{
+    Ein endlicher Graph ist genau dann k-fach zusammenhängend, wenn zwischen je zwei Knoten mindestens k kantendisjunkte Pfade verlaufen.
+}
+
+\subsection{Eulersche Graphen}
+
+\de{
+    Ein \red{Hamiltonkreis} ist ein Kreis in einem Graphen, der alle Knoten dieses Graphen genau einmal durchläuft\\
+    Ein \red{Eulerzug} ist ein Kantenzug in einem Graphen, der alle Kanten dieses Graphen genau einmal durchläuft
+}
+
+\newpage
+\se{
+    \begin{enumerate}
+        \item Ein endlicher Graph hat genau dann einen geschlossenen Eulerzug, wenn er zusammenhängend ist und jeder Knoten einen geraden Grad hat.
+        \item Ein endicher Graph hat einen offenen Eulerzug, wenn er zusammenhängend ist und genau zwei Knoten mit ungeradem Grad hat.
+    \end{enumerate}
+}
+
+\pr{
+    \begin{enumerate}
+        \item \underline{Richtung "$\implies$":} Der Kantenzug geht so oft zu jedem Knoten hin, wie von ihm weg\\
+        \underline{Richtung "$\impliedby$":} Sei $G =(V,E)$ zusammenhängend, sodass alle Knoten einen geraden Grad haben. Sei $(v_0, \dots, v_l)$ ein längster Kantenzug in G, in dem alle Kanten verschieden sind.\\
+        Dann ist $u_0 = u_l$, denn sonst hätten $u_0,u_l$ eine ungerade anzahl an Kanten im Kantenzug und der Kantenzug könnte verlängert werden, da $u_0,u_l$ geraden Grad haben.
+
+        (Widerspruchsannahme) Sei $\{u,v\} \in E$ eine Kante, die nicht durchlaufen wird, dann ist (O.B.d.A $u = u_0$) $(v,u_0,\dots,u_l)$ ein längerer Kantenzug in G.
+
+        \item \underline{Richtung "$\implies$":} Der Kantenzug startet bei einem Knoten mit ungeradem Grad und endet bei dem anderen Knoten mit ungeradem Grad.\\
+        \underline{Richtung "$\impliedby$":} Seien $u,v \in U$ mit ungeradem Grad. Sei $G':=(V \cup \{w\}, E \cup \{\{u,w\}, \{v,w\}\})$\\
+        In G' hat jeder Knoten einen geraden Grad, es gibt also den geschlossenen Eulerzug $(w,v,\dots,u,w)$ in G'.\\
+        Deshalb ist $(v,\dots,w)$ ein offener Eulerzug in G.
+    \end{enumerate}
+}
 
 
 \end{document}
