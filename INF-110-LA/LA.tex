@@ -3028,5 +3028,275 @@ Die Eigenwerte lassen sich als Nullstellen ablesen:
 
 $\implies \{\vvvec{1}{0}{2}, \vvvec{-2}{1}{2}, \vvvec{1}{1}{1}\}$ ist eine Basis des $\R^3$
 
+\ex Gesucht sind die Eigenwerte und Eigenvektoren der Matrix
+$$\begin{pmatrix}
+    0 & 1 & 1\\
+    1 & 0 & 1\\
+    1 & 1 & 0
+\end{pmatrix}$$
+\begin{align*}
+    0 = \chi_A(k) &= \det \begin{pmatrix}
+        -k & 1 & 1\\
+        1 & -k & 1\\
+        1 & 1 & -k
+    \end{pmatrix} = \det \begin{pmatrix}
+        -k & 1 + k & 1 + k\\
+        1 & -1 - k & 0\\
+        1 & 0 & -1 - k
+    \end{pmatrix}\\
+    &= \det \begin{pmatrix}
+        2-k & 0 & 0\\
+        1 & -1-k & 0\\
+        1 & 0 & -1-k
+    \end{pmatrix}\\
+    &= (2-k) \cdot (-1-k)^2
+\end{align*}
+Die Eigenwerte sind $k_1 = 2$ und $k_2 = k_3 = -1$.
+\begin{itemize}
+    \item $\eig_2(A) = \ker(A - 2E_3) = \ker \begin{pmatrix}
+        -2 & 1 & 1\\
+        1 & -2 & 1\\
+        1 & 1 & -2
+    \end{pmatrix} = \spann{\{\vvvec{1}{1}{1}\}}$
+    \item $\eig_{-1}(A) = \ker(A + E_3) = \ker \begin{pmatrix}
+        1 & 1 & 1\\
+        1 & 1 & 1\\
+        1 & 1 & 1
+    \end{pmatrix} = \spann{\{\vvvec{1}{-1}{0}, \vvvec{1}{0}{-1}\}}$
+\end{itemize}
+
+Für diese Matrix A gilt:
+\[
+    \{\vvvec{1}{1}{1}, \vvvec{-1}{1}{0}, \vvvec{-1}{0}{1}\} \text{ ist eine Basis des } \R^3
+\]
+
+\an{
+    \begin{itemize}
+        \item Es gibt Matrizen $A \in K^{n \times n}$, so dass $K^n$ eine Basis hat, die aus Eigenvektoren von A besteht.\\
+        Eine solche Basis wird \red{Eigenvektorbasis} (bezüglich A) des $K^n$ genannt.
+        \item Nicht alle Matrizen habendiese Eigenschaft, \\
+        z.B hat $\begin{pmatrix}
+            1 & 1\\
+            0 & 1
+        \end{pmatrix} \in R^{2 \times 2}$ die Eigenwerte $k_1 = k_2 = 1$\\
+        und $\eig_1(A) = \spann{\{\vvec{1}{0}\}}$\\
+        $\R^2$ hat keine Eigenvektorbasis bezüglich dieser Matrix A.
+    \end{itemize}
+}
+
+\newpage
+\subsection{Diagonalisierbarkeit von Matrizen}
+
+\de{
+    Sei $A \in K^{n \times n}$.\\
+    A heißt \red{diagonalisierbar}, wenn es eine invertierbare Matrix S mit
+    \[
+        \red{S^{-1} \cdot A \cdot S = D}
+    \]
+    gibt, so dass D eine Diagonalmatrix ist.
+}
+
+\ex $\begin{pmatrix}
+    0 & 1 & 1\\
+    1 & 0 & 1\\
+    1 & 1 & 0
+\end{pmatrix}$ ist diagonalisierbar, denn für $S = \begin{pmatrix}
+    1 & -1 & -1\\
+    1 & 1 & 0\\
+    1 & 0 & 1
+\end{pmatrix}$ gilt:
+\[
+    S^{-1} \cdot A \cdot S = \begin{pmatrix}
+        2 & 0 & 0\\
+        0 & -1 & 0\\
+        0 & 0 & -1
+    \end{pmatrix}
+\]
+
+\se{
+    Sei $A \in K^{n \times n}$. Dann sind folgende Bedingungen äquivalent:
+    \begin{enumerate}
+        \item A ist diagonalisierbar
+        \item $K^n$ hat eine Eigenvektorbasis bezüglich A
+        \item A hat n linear unabhängige Eigenvektoren
+    \end{enumerate}
+}
+\pr{
+    (von $(2) \implies (1)$):
+
+    Es seine $v_1, \dots, v_n$ die Elemente einer Eigenvektorbasis bezüglich A des $K^n$. Dann sind $V_1, \dots, v_n$ linear unabhängig.\\
+    Sei $s := (v_1, \dots, v_n)$. $S^-1$ existiert, da $\rg(S) = n$.
+
+    \begin{align*}
+        A \cdot S =  \cdot (v_1, \dots, v_n) &= (Av_1, \dots, Av_n)\\
+        &= (kv_1, \dots, kv_n)\\
+        &= \begin{pmatrix}
+            k_1v_{11} & \dots & k_nv_{1n}\\
+            \vdots & \ddots & \vdots\\
+            k_1v_{n1} & \dots & k_nv_{nn}
+        \end{pmatrix}\\
+        &= \begin{pmatrix}
+            v_11 & \dots & v_1n\\
+            \vdots & \ddots & \vdots\\
+            v_n1 & \dots & v_nn
+        \end{pmatrix} \cdot \begin{pmatrix}
+            k_1 & & 0\\
+            & \ddots &\\
+            0 & & k_n
+        \end{pmatrix}\\
+        &= S \cdot D
+    \end{align*}
+    $\implies S^{-1} \cdot A \cdot S = D$
+}
+
+\ex 
+\begin{align*}
+        \underbrace{\begin{pmatrix}
+        0 & 1 & 1\\
+        1 & 0 & 1\\
+        1 & 1 & 0
+    \end{pmatrix}}_A \cdot \underbrace{\begin{pmatrix}
+        1 & -1 & -1\\
+        1 & 1 & 0\\
+        1 & 0 & 1
+    \end{pmatrix}}_S &= (A \cdot \vvvec{1}{1}{1}, A \cdot \vvvec{-1}{1}{0}, A \cdot \vvvec{-1}{0}{1})\\
+    &= (2 \cdot \vvvec{1}{1}{1}, -1 \cdot \vvvec{-1}{1}{0}, -1 \cdot \vvvec{-1}{0}{1})\\
+    &= \underbrace{\begin{pmatrix}
+        1 & -1 & -1\\
+        1 & 1 & 0\\
+        1 & 0 & 1
+    \end{pmatrix}}_S \cdot \underbrace{\begin{pmatrix}
+        2 & 0 & 0\\
+        0 & -1 & 0\\
+        0 & 0 & -1
+    \end{pmatrix}}_D 
+\end{align*}
+
+\an{
+    Es besteht kein Zusammenhang zwischen Diagonalisierbarkeit und Invertierbarkeit von Matrizen:
+    \begin{itemize}
+        \item $A_1 = \begin{pmatrix}
+            1 & 0\\
+            0 & 0
+        \end{pmatrix}$ ist diagonalisierbar, aber nicht invertierbar.
+        \item $A_2 = \begin{pmatrix}
+            1 & 1\\
+            0 & 1
+        \end{pmatrix}$ ist invertierbar, aber nicht diagonalisierbar.
+    \end{itemize}
+}
+
+\subsection{Anwendungen und Beispiele}
+
+\subsubsection{Schnelles Potenzieren für diagonalisierbare Matrizen A}
+
+Gesucht ist $A^k$
+\begin{enumerate}
+    \item Diagonalisieren von A: $S^{-1} \cdot A \cdot S = D$
+    \item Potenzieren der DiagonalMatrix: $D = \begin{pmatrix}
+        d_1 & & 0\\
+        & \ddots &\\
+        0 & & d_n
+    \end{pmatrix}$
+    
+    $D^k = \begin{pmatrix}
+        k_1^k & & 0\\
+        & \ddots &\\
+        0 & & k_n^k
+    \end{pmatrix}$
+    \item Berechnung von $A^k$ in der Form:
+    \begin{align*}
+        A^k = (s \cdot D \cdot S^{-1})^k &= (S \cdot D \cdot S^{-1}) \cdot S \cdot \dots \cdot S^{-1} \cdot (S \cdot D \cdot S^{-1})\\
+        &= S \cdot D \cdot (S^{-1} \cdot S) \cdot \dots \cdot (S^{-1} \cdot S) \cdot D \cdot S^{-1}\\
+        &= S \cdot D^k \cdot S^{-1}
+    \end{align*}
+\end{enumerate}
+
+\subsubsection{Langzeitverhalten diskreter dynamischer Systeme}
+
+Eine Zählung ergibt: $W_0 = \vvvec{x_0}{y_0}{z_0}$
+
+Entwicklung der Population in den folgenden Jahren:
+\[
+    w_{k+1} = A \cdot w_k \text{ mit } A = \begin{pmatrix}
+        0 & 0 & 0,33\\
+        0,18 & 0 & 0\\
+        0 & 0,71& 0,94
+    \end{pmatrix}, w_k = \vvvec{x_k}{y_k}{z_k}
+\]
+\begin{itemize}
+    \item A hat genau 3 Eigenwerte $k_1, k_2, k_3$\\
+    Für zugehörige Eigenvektoren $v_1, v_2, v_3$ gilt: $A \cdot v_i = k_i \cdot v_i$ für $i = 1,2,3$
+    \item Darstellung vin $w_0$ als Linearkombination:
+    \[
+        w_0 = r_1v_1 + r_2v_2 + r_3v_3 \text{ mit geeigneten } r_1, r_2, r_3 \in \R
+    \]
+    \item \begin{align*}
+        w_1 = A \cdot w_0 &= A \cdot (r_1v_1 + r_2v_2 + r_3v_3)\\
+        &= r_1 \cdot Av_1 + r_2 \cdot Av_2 + r_3 \cdot Av_3\\
+        &= r_1k_1v_1 + r_2k_2v_2 + r_3k_3v_3\\
+        w_2 = A \cdot w_1 &= A \cdot (r_1k_1v_1 + r_2k_2v_2 + r_3k_3v_3)\\
+        &= r_1k_1 \cdot Av_1 + r_2k_2 \cdot Av_2 + r_3k_3 \cdot Av_3\\
+        &= r_1k_1^2v_1 + r_2k_2^2v_2 + r_3k_3^2v_3\\
+        &\vdots\\
+        w_n = A \cdot w_{n-1} &= r_1k_1^nv_1 + r_2k_2^nv_2 + r_3k_3^nv_3
+    \end{align*}
+\end{itemize}
+
+\subsubsection{Explizite Formel für die Fibonacci-Zahlen}
+
+\begin{align*}
+    \vvec{f_{n + 1}}{f_n} = \vvec{f_n + f_{n-1}}{f_n} &= \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix} \cdot \vvec{f_n}{f_{n - 1}}\\
+    &= \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix} \cdot \vvec{f_{n-1} + f_{n - 2}}{f_{n - 1}} = \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^2 \cdot \vvec{f_{n-1}}{f_{n-2}}\\
+    &= \dots\\
+    &= \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^n \cdot \vvec{f_{n-(n-1)}}{f_{n-n}} = \begin{pmatrix}
+        1 & 1\\\
+        1 & 0
+    \end{pmatrix} \cdot \vvec{f_1}{f_0}\\
+    &= \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}^n \cdot \vvec{1}{0}
+\end{align*}
+
+\newpage
+Sei $A := \begin{pmatrix}
+    1 & 1\\
+    1 & 0
+\end{pmatrix}$.
+\begin{itemize}
+    \item Eigenwerte von $A = \begin{pmatrix}
+        1 & 1\\
+        1 & 0
+    \end{pmatrix}:$\\
+    $k_1 + k_2 = 1$ und $k_1 \cdot k_2 = -1 \implies k_{1/2} = \frac{1 \pm \sqrt{5}}{2}$
+    \item Eigenvektorbasis von $\R^2$ bezüglich A: $\{\vvec{k_1}{1}, \vvec{k_2}{1}\}$\\
+    Man kann den Vektor $\vvec{1}{0}$ als Linearkombination dieser Vektoren\\
+    darstellen:
+    \[
+        \vvec{1}{0} = \frac{1}{2k_1-1} \cdot \vvec{k_1}{1} - \frac{1}{2k_1-1} \vvec{k_2}{1}
+    \]
+\end{itemize}
+Damit gilt:
+\begin{align*}
+    \vvec{f_{n+1}}{f(n)} &= A^n \cdot \vvec{1}{0}\\
+    &= A^n \cdot (\frac{1}{2k_1-1} \cdot \vvec{k_1}{1} - \frac{1}{2k_1-1} \cdot \vvec{k_2}{1})\\
+    &= \frac{1}{2k_1-1} \cdot (A^n \cdot \vvec{k_1}{1} - A^n \cdot \vvec{k_2}{1})\\
+    &= \frac{1}{2k_1-1} \cdot (k_1^n \cdot \vvec{k_1}{1} - k-2^n \cdot \vvec{k_2}{1})\\
+    \implies f_n &= \frac{1}{2k_1-1} \cdot (k_1^n - k_2^n)\\
+    \implies f_n &= \frac{1}{\sqrt{5}} \cdot ((\frac{1 + \sqrt{5}}{2})^n - (\frac{1 - \sqrt{5}}{2})^n)) (n \in \N, n \ge 0)
+\end{align*}
 
 \end{document}
