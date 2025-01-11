@@ -3063,5 +3063,53 @@ Graph $G_B = (V_B, E_B)$ mit
     \end{enumerate}
 }
 
+\subsection{Paarungen}
+
+\de{
+    Eine \red{Paarung in G} ist eine Teilmenge $M \subseteq E$ mit\\
+    $\forall e, e' \in M: e \cap e' = \emptyset$.\\
+    Sie heißt \red{perfekt}, falls $V = \bigcup_{e \in M} e$.\\
+    Für $\{x,y\} \in M$ heißt x \red{Partner} von y.\\
+    Für $S \subseteq V$ ist eine \red{Paarung von S} eine Paarung M mit $S \subseteq \bigcup_{e \in M} e$
+}
+
+\de{
+    Seien A,B Mengen. $A \red{\xor} B := (A \backslash B) \cup (B \backslash A)$
+}
+
+\lem{
+    Seien M, M' Paarungen in einem endlichen Graphen. Dann ist $M \xor M'$ eine disjunkte Vereinigung von Kreisen gerader Länge und Pfaden.
+}
+\pr{
+    Induktion über Kardinalität von $|M'|$:
+
+    IA: Wahr für $|M'| = 0$
+
+    IS: $M \xor (M' \cup \{e\}) = \begin{cases}
+        M \xor M' & \text{falls $e \notin M$}\\
+        (M \xor M') \backslash \{e\} & \text{sonst}
+    \end{cases}$
+}
+
+Sei $S \subseteq V$. $N(S) := \{n \in V \st \exists s \in S: \{n,s\} \in E\}$.\\
+Dann gilt: Wenn es eine Paarung von S gibt, dann $|N(S)| \ge |S|$
+
+\se{
+    Heiratssatz von Hall:\\
+    Sei $G=(V,E)$ ein endlicher und zwei-färbbarer Graph. Seien $A \subseteq V$ mit Farbe 1 und $B \subseteq V$ mit Farbe 2.\\
+    Dann hat G genau dann eine Paarung von A, wenn gilt:
+    \[
+        \forall S \subseteq A: |N(S)| \ge |S|   
+    \]
+}
+
+\de{
+    Eine \red{Überdeckung} von G ist $U \subseteq V$ mit $\{e \in E \st e \cap U \ne \emptyset\} = E$
+}
+
+\se{
+    Satz von König:\\
+    Sei G endlich und 2-färbbar. Dann ist die Größe der größten Paarung gleich der Größte der kleinsten Überdeckung.
+}
 
 \end{document}
