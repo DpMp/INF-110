@@ -3112,4 +3112,281 @@ Dann gilt: Wenn es eine Paarung von S gibt, dann $|N(S)| \ge |S|$
     Sei G endlich und 2-färbbar. Dann ist die Größe der größten Paarung gleich der Größte der kleinsten Überdeckung.
 }
 
+\newpage
+\section{Relationen}
+
+\de{
+    Sei A eine Menge. Eine (zweistellige) \red{Relation} auf A ist eine Teilmenge $R \subseteq A \times A$.
+}
+
+Schreibweisen:
+\begin{itemize}
+    \item Mengenlehre: $(a,b) \in R$
+    \item Logik: $R(a,b)$
+    \item a und b stehen in Relation zu R
+    \item $aRb$ (t.B $a \le b$)
+\end{itemize}
+
+\de{
+    Eine Relation R auf A heißt
+    \begin{itemize}
+        \item \red{reflexiv}, falls $\forall a \in A: (a,a) \in R$
+        \item \red{symmetrisch}, falls $\forall a,b \in A: (a,b) \in R \implies (b,a) \in R$
+        \item \red{antisymmetrisch}, falls $\forall a,b \in A: (a,b), (b,a) \in R \implies a = b$
+        \item \red{transitiv}, falls $\forall a,b,c \in A: (a,b), (b,c) \in R \implies (a,c) \in R$
+    \end{itemize}
+}
+
+\subsection{Äquivalenzrelationen}
+
+\de{
+    Eine Relation auf einer Menge heißt \red{Äquivalenzrelation}, falls sie reflexiv, symmetrisch und transitiv ist.
+}
+
+\ex \begin{itemize}
+    \item $R = A \times A$ ist die größte Relation auf A
+    \item $R = \{(a,a) \st a \in A\}$ ist die Gleichheitsrelation auf a
+    \item Auf $A = P(\N): (M,N) \in R \iff |M| = |N|$, d.h. es existiert eine Bijektion $M \to N$
+    \item $A = \{1, \dots, n\}$, für gegebenes $\pi \in S_n$:\\
+    $(i,j) \in R \iff \exists k \in \N: \pi^k(i) = j$, d.h. in der Zyklenschreibweise von $\pi$ gibt es einen Tyklus, der i und j enthält.
+    \item Nebenklassen: Sei G eine Gruppe, U eine Untergruppe. $(g,h) \in R \iff gh^{-1} \in U$
+    \item Sei A die Menge aller Graphen mit der Knotenmenge $\{1, \dots, n\}$.\\
+    $(G,H) \in R \iff G, H$ sind isomorph
+\end{itemize}
+
+\newpage
+\lem{
+    Sei A eine Menge, R und S Äquivalenzrelationen auf A. $R \cap S$ ist eine Äquivalenzrelation auf A.
+}
+
+\pr{
+    für Transitivitär:\\
+    Seien $a,b,c \in A$ mit $(a,b) \in R \cap S$ und $(b,c) \in R \cap S$.\\
+    Dann gelten $((a,b),(b,c) \in R \implies (a,c) \in R)$ und\\
+    $((a,b),(b,c) \in S \implies (a,c) \in S)$, wodurch $(a,c) \in R \cap S$ impliziert wird.
+}
+
+\subsubsection{Äquivalenzklassen und Partitionen}
+
+\de{
+    Sei A eine Menge, R eine Äquivalenzrelation auf A und $a \in A$.\\
+    Die Menge $a/R := \{b \in A \st (a,b) \in R\} \subseteq A$ heißt \red{Äquivalenzklasse} von A bezüglich R.\\
+    \gray{$a/R$ enthält alle Elemente, mit denen a in Relation steht.}
+
+    Die Menge $A/R := \{a/R \st a \in A\} \subseteq P(A)$ heißt \red{Faktormenge} von A nach R.
+}
+
+\lem{
+    Zwei Äquivalenzklassen sind entweder gleich oder haben den trivialen Schnitt.
+}
+
+\pr{
+    Sei $c \in a/R \cap b/R$. Zu zeigen: $a/R \supseteq b/R$ und $a/R \subseteq b/R$\\
+    Sei $b' \in b/R$. Zu zeigen: $b' \in a/R$.\\
+    $(a,c),(b,c) \in R \implies (a,c),(c,b) \in R \implies (a,b) \in R$\\
+    $(a,b), (b,b') \in R \implies (a,b') \in R \implies b' \in a/R \implies \supseteq$\\
+    Analog für $\subseteq$.
+}
+
+\de{
+    Sei A eine Menge. Eine \red{Partition} von A ist $P \subseteq P(A)$ mit:
+    \begin{itemize}
+        \item $\emptyset \notin P$
+        \item $\forall M,N \in P: M \cap N = \emptyset \lor M = N$
+        \item $\bigcup_{M \in P}M = A$
+    \end{itemize}
+}
+
+\newpage
+\lem{
+    Sei A eine Menge, R Äquivalenzrelation auf A, P eine Partition auf A:
+    \begin{enumerate}
+        \item $A/R$ ist eine Partition.
+        \item $R_P := \bigcup_{M \in P} M \times M$ d.h. $(a,b) \in R_P \iff \exists M \in P: a,b \in M$ ist eine Äquivalenzrelation.
+        \item $R_{A/R} = R$
+        \item $A/R_P = P$
+    \end{enumerate}
+}
+
+\pr{
+    \begin{enumerate}
+        \item Sei $M \in A/R$. Dann $\exists a \in A: M = a/R$, also $a \in M$, d.h. $M \ne \emptyset$ und $\emptyset \notin A/R$.\\
+        $A = \bigcup_{a \in A}a/R$ stimmt, da $a \in a/R$.
+        \item \underline{reflexiv:} Sei $a \in A$. Da $A = \bigcup M$, gibt es ein $M \in P: a \in M$.\\
+        Dann ist $(a,a) \in M \times M$ und somit $(a,a) \in R_P$
+        
+        \underline{symmetrisch:} Seien $a,b \in A$ mit $(a,b) \in R_P \iff \exists M \in P$ mit $a,b \in M \iff (b,a) \in R_P$
+
+        \underline{transitiv:} Seien $a,b,c \in A$ mit $(a,b),(b,c) \in R_P$\\
+        $\implies \exists M,N \in P: a,b \in M$ und $(b,c) \in N$, d.h. $b \in M \cap N$\\
+        $\implies M \cap N \ne \emptyset \implies M = N \implies a,b,c \in M$\\
+        $\implies (a,c) \in R_P$
+
+        \gray{M und N sind Elemente der Partition einer Äquivalenzrelation und somit Äquivalenzklassen}
+        \item $R_{A/R} = \{(a,b) \st \exists c \in A/R: a,b \in c/R\}$\\
+        $\phantom{R_{A/R} }= \{(a,b) \st a/R = b/R\} = R$
+        \item $M \in A/R_P \iff \exists a \in A: M = \{b \in A \st a,b \in M\}$\\
+        $\phantom{M \in A/R_P} \iff M \in P$
+    \end{enumerate}
+}
+
+\ex \begin{itemize}
+    \item Sei $G = (V,E)$ ein Graph. G ist die disjunkte Vereinigung seiner\\
+    Zusammenhangskomponenten, d.h\\
+    $P = \{M \subseteq V \st M \text{ ist die Kantenmenge einer ZHK}\}$\\
+    $R_P : (u,w) \in R$, falls
+    \item $\pi \in S_n, \pi = (1 \; 2 \; 3) \; (4 \; 5) \; (6)$:\\
+    Äquivalenzrelation: $1 \to 2, 2 \to 3, 3 \to 1, 4 \to 5, 5 \to 4, 6 \to 6$\\
+    Partition: $\{1,2,3\}, \{4,5\}, \{6\}$
+    \item $\Z := (\N \times \N)/R$, wobei $((a,b),(c,d)) \in R \iff a + d = b + c$
+    \item $\Q := (\Z \times \Z \backslash \{0\})/R$
+\end{itemize}
+
+\subsubsection{Partitionen zählen}
+
+Das vorherige Lemma impliziert, dass die Anzahl der Äquivalenzrelationen auf A gleich der Anzahl der Partitionen auf A ist.\\
+Es stellt sich die Frage, wie viele Partitionen mit k ELementen es auf einer n-elementigen Menge gibt.\\
+Die Antwort darauf liefert die Stirlingsche Partitionszahl $S_{n,k} \in \N$
+
+\ex $A = \{1,2,3\}, k = 2, n = 3: \{\{1\},\{2,3\}\}, \{\{2\}\{1,3\}\}, \{\{3\}, \{1,2\}\}$\\
+\phantom{\ex} $\iff S_{3,2} = 3$
+
+\prop{
+    Seien $n,k \in \N$:
+    \begin{enumerate}
+        \item $S_{n,n} = 1$
+        \item $S_{n,k} = 0$, falls $k > n$ oder $n > 0 \land k = 0$
+        \item $S_{n,k} = S_{n-1,k-1} + k \cdot S_{n-1, k}$, falls $n,k > 0$
+    \end{enumerate}
+}
+
+\an{
+    Um $S_{n,k}$ zu berechnen muss $S_{n',k'}$ für $n' < / \le n$ und $k' < / \le k$ bekannt sein. Ein solches Verhalten nennt sich "rekursive Formel".
+}
+
+\pr{
+    $S_{0,0}: \emptyset$ ist eine Null-elementige Partition der leeren Menge.
+    \begin{enumerate}
+        \item $\{\{1\}, \dots, \{n\}\}$ ist die einzige n-elementige Partition\\
+        von $\{1, \dots, n\}$.
+        \item Da die leere Menge kein Element der Partition sein kann, lässt sich zu der Partition aus 1 kein weiteres Element der Partition finden, sodass diese mehr Elemente enthält.\\
+        n Elemente lönnen nicht auf 0 Mengen aufgeteilt werden.
+        \item Beobachtung: $\{1, \dots, n\} = \{1, \dots, n-1\} \cup \{n\}$.\\
+        Damit gibt es zwei Arten von Partitionen: $\{n\} \in P$ und\\
+        $\{n\} \notin P$.
+
+        \underline{Fall 1:} Es gibt $S_{n-1,k-1}$ Möglichkeiten für eine Partition des Restes, da ein Element weniger auf einen Platz weniger\\
+        aufgeteilt wird.\\
+        \underline{Fall 2:} Für die Partitionierung von $\{1, \dots, n-1\}$ in k Mengen gibt es $S_{n-1,k}$ Möglichkeiten.\\
+        Jeder dieser k Mengen kann n hinzugefügt werden, also gibt\\
+        es insgesamt $k \cdot S_{n-1, k}$ Möglichkeiten.
+
+        Damit gibt es Insgesamt $S_{n-1,k-1} + k \cdot S_{n-1,k}$ Möglichkeiten.
+    \end{enumerate}
+}
+
+\newpage
+\de{
+    Die n-te \red{Bell-Zahl} ist die Anzahl der Partitionen einer n-elementigen Menge, d.h. $B_n = \sum_{k=0}^{n} S_{n,k}$.\\
+    $B_n = \{1,1,2,3,15,52,203,877,4140\}$
+}
+
+\prop{
+    Für $n\in \N$ gilt: $B_{n+1} = \sum_{k = 0}^{n} \vvec{n}{k} \cdot B_k$
+}
+
+\pr{
+    In einer Partition von $\{1, \dots, n+1\}$: $n+1$ liegt in einer Menge der Größe $(n+1-k)$, wobei $k \le n$ für ein k.\\
+    Dafür gibt es $\vvec{n}{n-k} = \vvec{n}{k}$ Möglichkeiten. Der Rest kann auf $B_k$ Möglichkeiten partitioniert werden.
+}
+
+\subsection{Ordnungsrelationen}
+
+\de{
+    Eine Relation heißt \red{partielle Ordnung}, ffalls sie reflexiv, transitiv und antisymmetrisch ist.\\
+    Wir schreiben $a \subseteq b$ statt $(a,b) \in R$
+}
+
+\ex \begin{itemize}
+    \item $\le$ auf $\N, \Z, \Q, \R$
+    \item $|$ auf $\N$
+    \item $\subseteq$ auf $P(A)$
+\end{itemize}
+
+\de{
+    Falls $a \le b$ oder $b \le a$ sind a und b \red{vergleichbar}, sonst \red{unvergleichbar}.
+}
+
+\ex In $(\N, |)$ sind 2 und 3 unvergleichbar, da 2 nicht 3 teilt und 3 nicht 2 teilt.
+
+\subsubsection{Hasse-Diagramm}
+
+\de{
+    Bei Hasse Diagrammen gilt:
+    \begin{itemize}
+        \item Knotenmenge = A
+        \item $\{a,b\} \in E$, falls $a \ne b, a \le b$ und $\nexists c$ mit $a \le c \le b$
+        \item a wird "tiefer" als b gezeichnet
+    \end{itemize}
+}
+
+\ex
+\begin{center}
+    \begin{tikzpicture}
+        \node (1) at (0,0) {1};
+    
+        \node (2) at (-1,1) {2};
+        \node (3) at (0,1) {3};
+        \node (5) at (1,1) {5};
+
+        \node (4) at (-2.1,2.5) {4};
+        \node (6) at (-0.7,2.5) {6};
+        \node (10) at (0.7,2.5) {10};
+        \node (15) at (2.1,2.5) {15};
+
+        \node (12) at (-1, 4) {12};
+        \node (20) at (0, 4) {20};
+        \node (30) at (1, 4) {30};
+
+        \node (60) at (0, 5) {60};
+    
+        \draw[->] (2) -- (1);
+        \draw[->] (3) -- (1);
+        \draw[->] (5) -- (1);
+
+        \draw[->] (4) -- (2);
+        \draw[->] (6) -- (2);
+        \draw[->] (6) -- (3);
+        \draw[->] (10) -- (2);
+        \draw[->] (10) -- (5);
+        \draw[->] (15) -- (3);
+        \draw[->] (15) -- (5);
+
+        \draw[->] (12) -- (4);
+        \draw[->] (12) -- (6);
+        \draw[->] (20) -- (4);
+        \draw[->] (20) -- (10);
+        \draw[->] (30) -- (6);
+        \draw[->] (30) -- (10);
+        \draw[->] (30) -- (15);
+
+        \draw[->] (60) -- (12);
+        \draw[->] (60) -- (20);
+        \draw[->] (60) -- (30);
+    \end{tikzpicture}
+\end{center}
+
+\de{
+    Eine partielle Ordnung heißt \red{total} oder \red{reflexiv}, falls je zwei Elemente vergleichbar sind, d.h. $\forall a,b \in A: a \le b \lor b \le a$
+}
+
+\ex \begin{itemize}
+    \item $\le$ auf $\N, \Z, \Q, \R$
+    \item $|$ auf $\{1,2,4,8,16,32,64,128,\dots\}$
+    \item nicht $|$ auf $\N$
+    \item nicht $\subseteq$ auf $P(A)$, falls $|A| \ge 2$
+\end{itemize}
+
+
+
 \end{document}
