@@ -71,6 +71,8 @@
 \newcommand{\im}{\text{Im}}
 \newcommand{\ggt}{\text{ggT}}
 
+\newcommand{\bs}{\backslash}
+
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{3pt} 
@@ -223,7 +225,7 @@ Mengen können auch andere Mengen als Elemente enthalten:\\
             \draw[thick, black] (1, 0) ellipse (1 and 0.5);
         \end{tikzpicture}\\
         \centering
-        $Differenz: A \backslash B = \{x \in A \vst x \notin B\}$ &
+        $Differenz: A \bs B = \{x \in A \vst x \notin B\}$ &
         \begin{tikzpicture}
             \fill[thick, fill=blue!40, draw=white] (0, 0) ellipse (1 and 0.5) node[left] {$A$};
             \filldraw[thick, draw=black, fill=white] (1, 0) ellipse (1 and 0.5) node[right] {$B$};
@@ -338,7 +340,7 @@ Nehme an, dass $|K| < \infty$, d.h. die Menge $I = \{i_1, i_2, i_3, \dots, i_n\}
 
 \subsection{Mengenkomplement}
 
-\de{Sei $U$ eine Menge ("Universum") und $A, B \subseteq U$, so schreiben wir das \red{Komplement}, auch Mengenkomplement, von $A$ als $\n{A} := U \backslash A$.}
+\de{Sei $U$ eine Menge ("Universum") und $A, B \subseteq U$, so schreiben wir das \red{Komplement}, auch Mengenkomplement, von $A$ als $\n{A} := U \bs A$.}
 
 \newpage
 \subsubsection{De-Morgansche Regeln}
@@ -552,13 +554,13 @@ Um herauszufinden, wie sich der Binomialkoeffizient $\binom{n}{k}$ berechnen lä
     \gray{Die Menge $\{K \subseteq M \vst x \in K\}$ enthält alle Teilemengen von $M$, in denen $x$ als Element enthalten ist.\\ Die Menge $\{K \subseteq M \vst x \notin K\}$ enthält alle Teilmengen von $M$, in denen $x$ nicht als Element enthalten ist.}\\
     Die Anzahl dieser Mengen lässt sich folgendermaßen als Binomialkoeffizient darstellen:
     \begin{center}
-        $|\{K \subseteq M \vst x \in K\}| = |\{K \subseteq M \backslash \{x\} \vst |K| = k - 1\}| = \binom{n}{k - 1}$
+        $|\{K \subseteq M \vst x \in K\}| = |\{K \subseteq M \bs \{x\} \vst |K| = k - 1\}| = \binom{n}{k - 1}$
     \end{center}
-    \gray{Da festgelegt ist, dass $x$ bereits in $K$ enthalten ist, werden zusätzlich $k - 1$ beliebige Elemente aus $M \backslash \{x\}$ ausgewählt, sodass $K$ insgesamt $k$ Elemente enthält.}
+    \gray{Da festgelegt ist, dass $x$ bereits in $K$ enthalten ist, werden zusätzlich $k - 1$ beliebige Elemente aus $M \bs \{x\}$ ausgewählt, sodass $K$ insgesamt $k$ Elemente enthält.}
     \begin{equation*}
-        |\{K \subseteq M \vst x \notin K\}| = |\{K \subseteq M \backslash \{x\} \vst |K| = k\}| = \binom{n}{k}
+        |\{K \subseteq M \vst x \notin K\}| = |\{K \subseteq M \bs \{x\} \vst |K| = k\}| = \binom{n}{k}
     \end{equation*}
-    \gray{Da festgelegt ist, dass $x$ nicht in $K$ enthalten ist, werden $k$ beliebige Elemente aus $M \backslash \{x\}$ ausgewählt, sodass $K$ $k$ Elemente enthält, was dem normalen Binomialkoeffizienten entspricht.}
+    \gray{Da festgelegt ist, dass $x$ nicht in $K$ enthalten ist, werden $k$ beliebige Elemente aus $M \bs \{x\}$ ausgewählt, sodass $K$ $k$ Elemente enthält, was dem normalen Binomialkoeffizienten entspricht.}
 
     Nach der Definition des Binomialkoeffizienten gilt für die Menge $M$:
     \begin{equation*}
@@ -1540,7 +1542,7 @@ $A_n$ ist die Aussage $\sum_{i = 0}^{n}i = \frac{n \cdot (n+1)}{2}$
     $A_n:$ Seien $A,B$ Mengen mit $|A| = |B| = n$, dann ist jedes injektive $f: A \to B$ auch surjektiv.\\
     A: $n = 0$, $A = B = \emptyset$ und die leere Funktion $\emptyset \to \emptyset$ ist surjektiv.
 
-    IV: $f': A \backslash \{a\} \to B \backslash \{f(a)\}, f'(a') = f(a')$ ist bijektiv.
+    IV: $f': A \bs \{a\} \to B \bs \{f(a)\}, f'(a') = f(a')$ ist bijektiv.
 
     IS: Seien $A,B$ Mengen mit $|A| = |B| = n+1 > 0$ und $f: A \to B$ injektiv.\\
     Sei $a \in A$. Ein solches $a$ existiert, da $A \neq \emptyset$
@@ -1548,13 +1550,13 @@ $A_n$ ist die Aussage $\sum_{i = 0}^{n}i = \frac{n \cdot (n+1)}{2}$
     $f$ injektiv $\implies \forall a' \in A$ mit $a' \neq \emptyset: f(a') \neq f(a)'$,\\
     \gray{Zwei Elemente aus A zeigen nicht auf das gleiche Element in B, da die Abbildung injektiv ist}
 
-    d.h. $f': A \backslash \{a\} \to B \backslash \{f(a)\}, \; f'(a') = f(a')$ ist eine injektive Abbildung.\\
+    d.h. $f': A \bs \{a\} \to B \bs \{f(a)\}, \; f'(a') = f(a')$ ist eine injektive Abbildung.\\
     \gray{Wir definieren eine neue Abbildung, über alle Element von $A$ und $B$, bis auf $a$ und $f(a)$}
 
-    $|A\backslash \{a\}| = |B \backslash \{f(a)\}| = n$\\
+    $|A\bs \{a\}| = |B \bs \{f(a)\}| = n$\\
     \gray{Die Mächtigkeit der Mengen $A,B$ ist von $n+1$ um $1$ gesunken, da wir ein Element ausschließen}
 
-    Dann: $f[A] = f'[A \backslash \{a\}] \cup f[\{a\}] = B \backslash \{f(a)\} \cup f[\{a\}] = B$
+    Dann: $f[A] = f'[A \bs \{a\}] \cup f[\{a\}] = B \bs \{f(a)\} \cup f[\{a\}] = B$
 }
 
 \subsection{Teilbarkeit}
@@ -1684,7 +1686,7 @@ Primzahlen sind die "Elementarbausteine" der natürlichen Zahlen.
 \red{Fundamentalsatz der Arithmetik:}
 \begin{quote}
     Sei $n \in \N, \; n > 0$.\\
-    Dann $\exists! k \in \N$ und $\exists! p_1,\dots,p_k \in \N$ Primzahlen mit $p_1 < \dots < p_k$ und $\exists! \alpha_1, \dots, \alpha_k \in \N \backslash \{0\}: n = \prod_{i = 1}^{k} p_i^{\alpha_i} = p_1^{\alpha_1} \cdot \dots \cdot p_k^{\alpha_k}$
+    Dann $\exists! k \in \N$ und $\exists! p_1,\dots,p_k \in \N$ Primzahlen mit $p_1 < \dots < p_k$ und $\exists! \alpha_1, \dots, \alpha_k \in \N \bs \{0\}: n = \prod_{i = 1}^{k} p_i^{\alpha_i} = p_1^{\alpha_1} \cdot \dots \cdot p_k^{\alpha_k}$
 \end{quote}
 
 \ex \begin{itemize}
@@ -1846,13 +1848,13 @@ Primzahlen sind die "Elementarbausteine" der natürlichen Zahlen.
 
 Die Primfaktorzerlegung ist eindeutig:
 
-$n \in N \backslash \{0\}$\\
+$n \in N \bs \{0\}$\\
 Primfaktorzerlegung von $n$: $\prod_{i = 1}^{r}p_1^{a_i} \quad p_1 < \dots < p_r, p_1, \dots, p_r$ sind Primzahlen\\
 Primfaktorzerlegung von $1$: $\prod_{i = 1}^{\emptyset}p_1^{a_i} = 1$ (leeres Produkt)
 
 \pr{
     (Widerspruchsbeweis)\\
-    Angenommen es gibt ein $n \in \N \backslash \{0\}$ mit zwei verschiedenen Primfaktorzerlegungen $Z_1, Z_2$. Wähle $n$ kleinstmöglich.\\
+    Angenommen es gibt ein $n \in \N \bs \{0\}$ mit zwei verschiedenen Primfaktorzerlegungen $Z_1, Z_2$. Wähle $n$ kleinstmöglich.\\
     Nach dem Lemma von Euklid teilt jeder Primfaktor $p$ von $Z_1$ auch einen Primfaktor $q$ von $Z_2$\\
     \gray{Entweder $p$ teilt $q$ oder $p$ teilt $Z_2/q$, in welchem Falls das ganze für $Z_2/q$ getestet werden kann.}\\
     Deshalb gilt: $p=q$\\
@@ -2034,7 +2036,7 @@ $3 \equiv 3 \cdot 1 \equiv 3 \cdot (2 \cdot i) \equiv \frac{3 \cdot 2}{0} (\mod 
 
 \subsubsection{Nullteiler}
 \de{
-    Mann nennt $a \in \Z_n \backslash \{0\}$ \red{Nullteiler}, wenn es ein $b \in \Z_n \backslash \{0\}$ gibt, mit $a \cdot b = 0$
+    Mann nennt $a \in \Z_n \bs \{0\}$ \red{Nullteiler}, wenn es ein $b \in \Z_n \bs \{0\}$ gibt, mit $a \cdot b = 0$
 }
 \ex $2$ ist ein Nullteiler in $\Z_6$, da $2 \cdot 3 = 0 \; (\mod 6)$
 
@@ -2048,7 +2050,7 @@ $3 \equiv 3 \cdot 1 \equiv 3 \cdot (2 \cdot i) \equiv \frac{3 \cdot 2}{0} (\mod 
 \ex Einheiten in $\Z_6$ sind $5, 1$.
 
 \lem{
-    Sei $m \in \Z_n \backslash \{0\}$.
+    Sei $m \in \Z_n \bs \{0\}$.
     Dann sind äquivalent:
     \begin{itemize}
         \item $m$ ist Einheit in $\Z_n$.
@@ -2058,7 +2060,7 @@ $3 \equiv 3 \cdot 1 \equiv 3 \cdot (2 \cdot i) \equiv \frac{3 \cdot 2}{0} (\mod 
 }
 \pr{
     $1 \implies 2$ Wiederspruchsbeweis:\\
-    Sei $m$ ein Nullteiler in $\Z_n \backslash \{0\}$, d.h. $\exists b \in \Z_n \backslash \{0\}: m \cdot b = 0$\\
+    Sei $m$ ein Nullteiler in $\Z_n \bs \{0\}$, d.h. $\exists b \in \Z_n \bs \{0\}: m \cdot b = 0$\\
     Angenommen, $m$ ist eine Einheit, d.h. $\exists i \in \Z_n: m \cdot i = 1$
 
     \[
@@ -2070,7 +2072,7 @@ $3 \equiv 3 \cdot 1 \equiv 3 \cdot (2 \cdot i) \equiv \frac{3 \cdot 2}{0} (\mod 
     Angenommen, $ggT(m,n) > 1$\\
     Zu zeigen: $m$ ist Nullteiler:
     \[
-        m' := \frac{n}{ggT(m,n)} \in \Z_n \backslash \{0\}
+        m' := \frac{n}{ggT(m,n)} \in \Z_n \bs \{0\}
     \]
     $m \cdot m'$ ist ein Vielfaches von n, also $m \cdot m' \equiv 0 \; (\mod n)$
 
@@ -2308,7 +2310,7 @@ $(m_1, \dots, m_l) = (c_1 + (c_1 + m_1 \mod 2), \dots, c_l + (c_l + m_l \mod 2))
 \an{
     Sei $G$ eine Gruppe mit $g \in G$. Dann gilt:
     \[
-        |\spann{g}| = \min\{n \in \N \backslash \{0\} \st g^n = e\}
+        |\spann{g}| = \min\{n \in \N \bs \{0\} \st g^n = e\}
     \]
     Denn: $g^k = g^{k \mod(ord(g))}$ \gray{$ord(g)$ ist die Ordnung von $g$}
 }
@@ -2398,7 +2400,7 @@ $(m_1, \dots, m_l) = (c_1 + (c_1 + m_1 \mod 2), \dots, c_l + (c_l + m_l \mod 2))
 
     Das ist die "übliche Definition von $\Z_n$:
     \[
-        \Z_n = \Z \backslash \{n \cdot \Z\} = \{a + n \cdot\}
+        \Z_n = \Z \bs \{n \cdot \Z\} = \{a + n \cdot\}
     \]
     \item $G = D_4$, $u = \spann{r}$ \gray{$r$ ist die Rotation um $90$°}\\
     $|U| = 4$. Es gibt zwei Nebenklassen: Die Menge der Rotationen und die Menge der Spiegelungen.
@@ -2528,7 +2530,7 @@ Diese Graphen heißen schlicht bzw. einfach und ungerichtet.
 \ex In $P_5$ haben $1,5$ den Grad $1$ und $2,3,4$ den Grad $2$.
 
 \de{
-    Sei $G = (V,E)$ ein Graph. Der \red{Komplementärgraph} von $G$ ist $$\n{G} := (V, \vvec{V}{2} \backslash \{E\})$$
+    Sei $G = (V,E)$ ein Graph. Der \red{Komplementärgraph} von $G$ ist $$\n{G} := (V, \vvec{V}{2} \bs \{E\})$$
 }
 
 \an{
@@ -2621,13 +2623,13 @@ $$f \in S_n, f = \begin{pmatrix}
     \underline{Richtung $\impliedby$}: Angenommen $G$ ist nicht zusammenhängend.\\
     Sei $v \in V$ und $V' = \{u \in V \st \exists \text{ Kantenzug von $v$ nach $u$}\}$\\
     \prop{
-        $V \backslash V' \ne \emptyset$
+        $V \bs V' \ne \emptyset$
     }
     \pr{
         Sonst: $\forall u, u' \in V$ gibt es einen Kantenzug $v$ nach $u$ und $v$ nach $u'$. Dann ist $u$ nach $v$ nach $u'$ ein Kantenzug von $u$ nach $u'$. Da $u, u'$ beliebig, wäre $G$ zusammenhängend. \red{Wiederspruch!}
     }
 
-    Dann ist $G = G[V'] \uplus G[V \backslash V']$, sonst gäbe es $v_1 \in V'$ und $u_1 \in V \backslash V'$ mit $\{u_1,v_1\} \in E$ und dann existiert ein Kantenzug $v_1$ nach $u_1$. Das ist ein \red{Wiederspruch} zur Definition von $u$
+    Dann ist $G = G[V'] \uplus G[V \bs V']$, sonst gäbe es $v_1 \in V'$ und $u_1 \in V \bs V'$ mit $\{u_1,v_1\} \in E$ und dann existiert ein Kantenzug $v_1$ nach $u_1$. Das ist ein \red{Wiederspruch} zur Definition von $u$
 }
 
 \subsubsection{Zusammenhangskomponenten}
@@ -2635,7 +2637,7 @@ $$f \in S_n, f = \begin{pmatrix}
 \de{
     Eine \red{Zusammenhangskomponente} (ZK) eines Graphen $G$ ist ein\\
     maximal zusammenhängender Subgraph $H$ von $G$.\\
-    \gray{Maximal bedeutet: Für jedes $v \in V(G) \backslash V(H)$ gibt es keinen\\
+    \gray{Maximal bedeutet: Für jedes $v \in V(G) \bs V(H)$ gibt es keinen\\
     Kantenzug von einem Knoten in $H$ nach $v$}
 }
 
@@ -2754,9 +2756,9 @@ Erfüllbarkeitsprobleme, wie zum Beispiel in der Aussagenlogik, gibt.
     $A_n$: Jeder Baum mit $n$ Knoten hat genau $n-1$ Kanten.\\
     $IA$: Sei $|V=1|$. Dann ist $|E| = 0$ und es gilt $|E| = |V|-1$\\
     $IS$: Sei $n \ge 1$ mit $A_n$ wahr. Sei $G$ ein Baum mit $n+1$ Knoten.\\
-    Dann ist $1 \le 2$ und $G$ hat ein Blatt $v$. Deshalb ist $G[V \backslash \{v\}]$ ein Baum mit $n$ Knoten.\\
-    Nach IV hat $G[V \backslash \{v\}]$ genau $n-1$ Knoten.\\
-    Dann hat $G$ genau $n$ Kanten, nämlich die aus $G[V \backslash \{v\}]$ und\\
+    Dann ist $1 \le 2$ und $G$ hat ein Blatt $v$. Deshalb ist $G[V \bs \{v\}]$ ein Baum mit $n$ Knoten.\\
+    Nach IV hat $G[V \bs \{v\}]$ genau $n-1$ Knoten.\\
+    Dann hat $G$ genau $n$ Kanten, nämlich die aus $G[V \bs \{v\}]$ und\\
     zusätzlich $\{v,w\}$, wobei $w$ der einzige Nachbar von $v$ ist.
 
     \underline{$3. \implies 1.$} Sei $G$ zusammenhängend mit $|E| \le |V| - 1$.\\
@@ -2800,7 +2802,7 @@ Erfüllbarkeitsprobleme, wie zum Beispiel in der Aussagenlogik, gibt.
 \ex Sei $B$ ein Block von $G$:
 \begin{itemize}
     \item $|V(B)| = 1$. Dann besteht $B$ nur aus einem isolierten Knoten
-    \item $|V(B)| = 2$. Dann ist $B$ isomorph zu $P_2$ und $(V, E \backslash E(B))$ hat mehr ZK als $G$
+    \item $|V(B)| = 2$. Dann ist $B$ isomorph zu $P_2$ und $(V, E \bs E(B))$ hat mehr ZK als $G$
     \item $|V(B)| \ge 3$. Dan ist $B$ maximaler zweifach zusammenhängender Subgraph von $G$
 \end{itemize}
 
@@ -2887,7 +2889,7 @@ Graph $G_B = (V_B, E_B)$ mit
     Es ist zu zeigen, dass $G$ $2$-fach zusammenhängend ist, also $\forall v \in V: G-v$ zusammenhängend:
     \begin{itemize}
         \item[Fall 1] $v \in \{a_0, \dots a_n\}: G-v$ ist $G_n$ und zwei angehängte Pfade, also zusammenhängend
-        \item[Fall 2] $v \in V \backslash \{G_n\}: G-v$ ist $G_n-v$ und ein angehängter Weg. $G_n-v$ st nach \underline{IV} zusammenhängend, also ist $G-v$ zusammenhängend.
+        \item[Fall 2] $v \in V \bs \{G_n\}: G-v$ ist $G_n-v$ und ein angehängter Weg. $G_n-v$ st nach \underline{IV} zusammenhängend, also ist $G-v$ zusammenhängend.
     \end{itemize} 
 
     \underline{Richtung $\implies$}: Sei $G$ ein 2-fach zusammenhängender Graph.\\
@@ -2942,7 +2944,7 @@ Graph $G_B = (V_B, E_B)$ mit
         
         \underline{$IS$} Sei $n \in \N$, sodass $A_n$ gilt.\\ Sei $G = (V,E)$ mit $|E| = n+1$. Sei $A,B \subseteq V$.\\
         Wir müssen $k_{G,A-B}$ disjunkte A-B-Pfade finden.\\
-        Sei $e \in E$, betrachte $G' = (V, E \backslash \{e\})$. Sei $e = \{v_1, v_2\}$.
+        Sei $e \in E$, betrachte $G' = (V, E \bs \{e\})$. Sei $e = \{v_1, v_2\}$.
 
         \underline{Fall 1}: $k_{G,A-B} = k_{G',A-B}$, d.h. eine minimal trennende Menge in $G$ ist auch eine minimal trennende Menge in $G'$.\\
         Nach \underline{IV} gibt es $k_{G',A-B}$ disjunkte A-B-Pfade in $G'$, welche auch disjunkte A-B-Pfade in $G$ sind. Das zeigt Fall 1.
@@ -2959,12 +2961,12 @@ Graph $G_B = (V_B, E_B)$ mit
 
 \co{
     Sei $G=(V,E)$ ein endlicher Graph und $a,b \in U$ mit $\{a,b\} \notin E$.\\
-    Dann ist die maximale Anzahl paarweise unabhängiger Pfade von $a$ nach $b$ gleich der Größe der kleinsten Teilmenge $V \backslash \{a,b\}$, die $\{a\}$ von $\{b\}$ in $G$ trennt.
+    Dann ist die maximale Anzahl paarweise unabhängiger Pfade von $a$ nach $b$ gleich der Größe der kleinsten Teilmenge $V \bs \{a,b\}$, die $\{a\}$ von $\{b\}$ in $G$ trennt.
 }
 
 \pr{
-    Wenn $S \subseteq V \backslash \{A,B\}$ die Mengen $\{a\}$ und $\{b\}$ trennt, muss jeder Weg von A nach B durch S laufen, es kann also höchstens $|S|$ disjunkte Pfade geben.\\
-    Falls $\{a\}$ und $\{b\}$ sich in G  durch k Knoten aus $V \backslash \{A,B\}$ trennen lassen:\\
+    Wenn $S \subseteq V \bs \{A,B\}$ die Mengen $\{a\}$ und $\{b\}$ trennt, muss jeder Weg von A nach B durch S laufen, es kann also höchstens $|S|$ disjunkte Pfade geben.\\
+    Falls $\{a\}$ und $\{b\}$ sich in G  durch k Knoten aus $V \bs \{A,B\}$ trennen lassen:\\
     Sei $A \subseteq V$ die Menge der Nachbarn von a und $B \subseteq V$ die Menge der Nachbarn von b.\\
     Nach Annahme ist $a,b \notin A \cup B$. Dann lassen sich A und B nicht durch k Knoten trennen.
 
@@ -2977,7 +2979,7 @@ Graph $G_B = (V_B, E_B)$ mit
 \de{
     Ein Graph $G=(V,E)$ heißt \red{k-fach zusammenhängend}, falls\\
     $|V| \ge k+1$ und $\forall X \subseteq V$ mit $|X| < k$ ist\\
-    $G-V := G[V \backslash X]$ zusammenhängend.
+    $G-V := G[V \bs X]$ zusammenhängend.
 }
 
 \co{
@@ -2990,25 +2992,25 @@ Graph $G_B = (V_B, E_B)$ mit
     \underline{Richtung "$\impliedby$":} Wenn es $w_1, \dots, w_k$ unabhängige Pfade von a nach b gibt, dann können wir aus (k-1)-vielen dieser Wege einen Knoten $\ne a,b$ herauslöschen und es gibt immer noch einen Weg von a nach b.\\
     \underline{Richtung "$\implies$":} Falls $\{a,b\} \notin E$, dann sind wir nach dem vorher bewiesenen Korollar fertig.
     Sonst sei $e:=\{a,b\} \in E$ und\\
-    $G' = (V, E \backslash e)$\\
+    $G' = (V, E \bs e)$\\
     Falls es in G' k-1 unabhängige Pfade von a nach b gibt, dann gibt es auch in G k unabhängige Pfade von a nach b.\\
-    Somit gibt es nach dem vorherigen Korollar ein $X \subseteq V \backslash \{a,b\}$ mit $|X| \le k-1$ und  trennt $\{a\}$ von $\{b\}$ in G'.
+    Somit gibt es nach dem vorherigen Korollar ein $X \subseteq V \bs \{a,b\}$ mit $|X| \le k-1$ und  trennt $\{a\}$ von $\{b\}$ in G'.
 
-    Sei $v \in V \backslash \{X \cup e\}$, dann trennt X entweder $\{a\}$ oder $\{b\}$ von $\{v\}$ in G'.\\
-    Also gibt es in $G \backslash \{b \cup X\}$ keinen Pfad von a nach v.
+    Sei $v \in V \bs \{X \cup e\}$, dann trennt X entweder $\{a\}$ oder $\{b\}$ von $\{v\}$ in G'.\\
+    Also gibt es in $G \bs \{b \cup X\}$ keinen Pfad von a nach v.
 }
 
 \subsection{Kantenzusammenhang}
 
 \de{
-    Sei $G=(V,E)$ ein Graph. G heißt \red{k-fach kantenzusammenhängend}, falls $\forall F \subseteq E$ mit $|F| < k$ der Graph $(V, E \backslash F)$ zusammenhängend ist.
+    Sei $G=(V,E)$ ein Graph. G heißt \red{k-fach kantenzusammenhängend}, falls $\forall F \subseteq E$ mit $|F| < k$ der Graph $(V, E \bs F)$ zusammenhängend ist.
 }
 
 \ex $C_n$ ist 2-fach kantenzusammenhängend
 
 \newpage
 \de{
-    Seien $a,B \in V$ und $F \subseteq E$. Dann \red{trennt} F a von b, falls es in $(V, E \backslash F)$ keinen Kantenzug von a nach b gibt.\\
+    Seien $a,B \in V$ und $F \subseteq E$. Dann \red{trennt} F a von b, falls es in $(V, E \bs F)$ keinen Kantenzug von a nach b gibt.\\
     Zwei Kantenzüge $(u_1, \dots, u_l)$ und $(v_1, \dots, v_k)$ von a nach b heißen \red{kantendisjunkt}, falls sie keine gemeinsame Kante haben.
 }
 
@@ -3074,7 +3076,7 @@ Graph $G_B = (V_B, E_B)$ mit
 }
 
 \de{
-    Seien A,B Mengen. $A \red{\xor} B := (A \backslash B) \cup (B \backslash A)$
+    Seien A,B Mengen. $A \red{\xor} B := (A \bs B) \cup (B \bs A)$
 }
 
 \lem{
@@ -3087,7 +3089,7 @@ Graph $G_B = (V_B, E_B)$ mit
 
     IS: $M \xor (M' \cup \{e\}) = \begin{cases}
         M \xor M' & \text{falls $e \notin M$}\\
-        (M \xor M') \backslash \{e\} & \text{sonst}
+        (M \xor M') \bs \{e\} & \text{sonst}
     \end{cases}$
 }
 
@@ -3239,7 +3241,7 @@ Schreibweisen:
     Äquivalenzrelation: $1 \to 2, 2 \to 3, 3 \to 1, 4 \to 5, 5 \to 4, 6 \to 6$\\
     Partition: $\{1,2,3\}, \{4,5\}, \{6\}$
     \item $\Z := (\N \times \N)/R$, wobei $((a,b),(c,d)) \in R \iff a + d = b + c$
-    \item $\Q := (\Z \times \Z \backslash \{0\})/R$
+    \item $\Q := (\Z \times \Z \bs \{0\})/R$
 \end{itemize}
 
 \subsubsection{Partitionen zählen}
@@ -3387,6 +3389,310 @@ Die Antwort darauf liefert die Stirlingsche Partitionszahl $S_{n,k} \in \N$
     \item nicht $\subseteq$ auf $P(A)$, falls $|A| \ge 2$
 \end{itemize}
 
+\lem{
+    Sei A eine endliche Menge und R eine partielle Ordnung auf A.\\
+    Dann gibt es eine totale Ordnung L auf A mit $R \subseteq L$.
+}
 
+\newpage
+\pr{
+    Falls R total ist, muss L auch total sein und wir sind fertig.
+
+    Sonst seien $x,y \in A$ und unvergleichbar.\\
+    Sei $R' := R \cup \{(u,v) \st (u,x), (y,v) \in R\}$. Dann ist $(x,y) \in R'$
+    \begin{enumerate}
+        \item R' ist reflexiv, da R reflexiv ist und eine Ordnung reflexiv bleibt, wenn zu ihr weitere Elemente hinzugefügt werden.
+        \item R' ist antisymmetrisch: Sei $(a,b), (b,a) \in R'$.
+        \begin{itemize}
+            \item Falls $(a,b), (b,a) \in R$, dann ist a = b.
+            \item Falls $(a,b) \in R$ und $(b,a) \notin R$, dann ist $(b,x),(y,a) \in R$, dann ist $(a,x), (y,b) \in R$, dann ist $(y,x) \in R$, was ein Widerspruch ist, also kann dieser Fall nicht existieren.
+            \item Falls $(a,b),(b,a) \in R' \bs R$, dann ist $a = b$.
+        \end{itemize}
+        \item R' ist transitiv: Seien $(a,b),(b,c) \in R'$.
+        \begin{itemize}
+            \item Falls $(a,b),(b,c) \in R$, dann ist $(a,c) \in R$.
+            \item Falls $(a,b),(b,c) \notin R$, dann ist $(a,x),(y,b),(b,x),(y,c) \in R$, dann ist $(x,y) \in R$, weshalb der Fall nicht existieren kann.
+            \item Falls $(a,b) \in R$ und $(b,c) \notin R$, dann ist $(b,x),(y,c) \in R$, dann ist $(a,x),(y,c) \in R$.
+        \end{itemize}
+        Das heißt, das $R' \supseteq R$, also ist R' eine lineare Erweiterung von R.
+    \end{enumerate}
+}
+
+\de{
+    Sei A eine Menge. Eine Relation auf A heißt \red{Quasiordnung}, falls sie reflexiv und transitiv ist. Wir schreiben $a \preceq b$
+}
+
+Aus einer Quasiordnung bekommt man eine Äquivalenzrelation:
+\[
+    \sim := \{(a,b) \in A \times A \st a \preceq b \land b \preceq a\} = \preceq \cap \succeq
+\]
+
+\an{
+    Falls $\preceq$ partiell ist, dann ist $\sim$ Gleichheit.
+}
+
+\de{
+    Sei $\preceq$ eine Quasiordnung auf der Menge A und $\sim := \preceq \cap \succeq$. Dann ist die \red{Faktorordnung} von $\preceq$ die Ordnung auf $A / \sim$ definiert durch:
+    \[
+        a/\sim \le b/\sim \iff a \preceq b
+    \]
+}
+
+\lem{
+    $\le$ ist wohldefiniert und eine partielle Ordnung auf $A / \sim$.
+}
+\pr{
+    \begin{itemize}
+        \item wohldefiniert: Seien $a' \in a / \sim$ und $b' \in b / \sim$ und $a \preceq b$. Zu zeigen ist, dass gilt: $a' \preceq b'$.\\
+        $a' \in a / \sim \implies a' \preceq a$ und $b' \in b / \sim \implies b' \preceq b$.\\
+        $a' \preceq a \land b' \preceq b \implies a' \preceq b'$, denn $a' \preceq a \preceq b \preceq b'$.
+        \item reflexiv: $a \preceq a \implies a / \sim \le a / \sim$
+        \item anit-symmetrisch: Seien $b / \sim \in A / \sim$ mit $a / \sim \le b / \sim$ und $b / \sim \le a / \sim$.\\
+        Dann ist $a \preceq b$ und $b \preceq a$, das heißt $a \sim b$ und $a / \sim = b / \sim$
+    \end{itemize}
+}
+
+\ex Sei A die Menge der komplexen Zahlen und $z \preceq z' \iff |z| \le |z'|$. Es gilt: $z \sim z' \iff |z| = |z'|$.\\
+$\exists$ Bijektion: $\R_{\ge 0} \to \C / \sim: x \mapsto x / \sim$.\\
+Faktorordnung auf f: $\C / \sim \triangleq \le \text{ auf } \R$\\
+Dies lässt sich grafisch als Kreise um den Urpsrung darstellen, wobei dies die Äquivalenzklassen sind.
+
+\subsection{Ketten und Antiketten}
+
+Sei $(A; \le)$ eine Menge mit partieller Ordnung.
+
+\de{
+    Eine Teilemenge $K \subseteq A$ heißt
+    \begin{itemize}
+        \item \red{Kette}, falls $\forall a,b \in K: a \le b \lor b \le a$
+        \item \red{Antikette}, falls $\forall a,b \in K: a \le b \implies a = b$
+    \end{itemize}
+}
+
+\de{
+    Eine \red{aufsteigende Kette}, ist eine Abbildung $f: I \in \N \to A$ mit $i \le j \implies f(i) \le f(j)$.\\
+    Eine \red{absteigende Kette}, ist eine Abbildung $f: I \in \N \to A$ mit $i \le j \implies f(i) \ge f(j)$.
+}
+
+\se{
+    Sei A eine unendliche Menge und $\le$ eine partielle Ordnung auf A.\\
+    Dann gibt es auf A eine unendliche Kette oder eine unendliche Antikette.
+}
+
+\ex $(\N; \st)$
+\begin{itemize}
+    \item unendlich aufsteigende Kette: $(1,2,4,8,16,\dots)$, $f: \N \to \N: f(i) = 2^i$
+    \item unendliche Antikette: $(2,3,5,7,11,13,\dots)$, alle Primzahlen
+    \item es gibt keine unendlich absteigende Kette
+\end{itemize}
+
+\subsection{Ordnungen auf Wörtern}
+
+\de{
+    Sei A eine endliche Menge, z.B. $A = \{a,b,\dots,z\}$.\\
+    Ein \red{Wort der Länge n} ist eine Abbildung $W: \{1, \dots, n\} \to A$.\\
+    z.B.: $W(1,2,3,4) = h,u,n,d$
+    \begin{itemize}
+        \item $|W| := n$ ist die Länge des Wortes W
+        \item $\epsilon = 0$ ist ein Wort der Länge 0
+        \item $A*$ ist die Menge aller Wörter über A
+    \end{itemize} 
+}
+
+\de{
+    Wir definierten drei Ordnungen auf A:
+    \begin{itemize}
+        \item Präfixordnungen
+        \item Teilwortordnungen
+        \item Lexikographische Ordnungen
+    \end{itemize}
+}
+
+\subsubsection{Präfixordnungen}
+
+\de{
+    Seien $U,V \in A*$. Dann ist U ein \red{Präfix von V}, falls
+    \begin{itemize}
+        \item $|U| \le |V|$
+        \item $\forall i \le |U|: U(i) = V(i)$
+    \end{itemize}
+    Zum Beispiel ist "mathe" ein Präfix von "mathematik".\\
+    Das zugehörige Hasse-Diagramm ist ein unendlicher Baum.
+}
+
+Es gibt
+\begin{itemize}
+    \item unendlich aufsteigende Ketten: (a, aa, aaa, \dots)
+    \item keine unendlich absteigenden Ketten
+    \item unendliche Antiketten, fall $|A| \ge 2$: (a, ab, abb, abbb, \dots)
+\end{itemize}
+
+\subsubsection{Lexikographische Ordnungen}
+
+\de{
+    Sei $\le$ eine totale Ordnung auf A, z.B. $a \le b \le c \le \dots \le z$. Seien $U,V \in A*$.\\
+    Dann ist U \red{lexikographisch kleiner als} V, falls
+    \begin{itemize}
+        \item U ein Präfix von V ist oder
+        \item sei i die kleinste Zahl mit $U(i) \ne V(i)$, dann $U \le V \iff U(i) \le V(i)$
+    \end{itemize}
+}
+
+\subsubsection{Teilwortordnungen}
+
+\de{
+    Seien $U, V \in A*$. Dann ist U ein Teilwort von V, wenn man U durch Wegstreichen von Buchstaben aus V erhält,\\
+    d.h. $\exists 1 \leq i_1 \leq i_2 \leq \dots \leq i_{|U|} \leq |V|: U(j) = V(j)$ für $1 \leq j \leq |U|$\\
+    z.B. mathematik $\to$ \sout{m}at\sout{h}em\sout{atik} $\to$ atem
+}
+
+\an{
+    Falls U ein Teilwort von V ist, gilt: $U \leq V$
+}
+
+\an{
+    Es gibt keine Antiketten
+}
+
+\newpage
+\section{Bäume zählen}
+
+\se{
+    Für $n \geq 1$ gibt es $n^{n-2}$ Bäume mit Knotenmenge $\{1, \dots, n\}$.
+}
+
+\subsection{Prüfercodes}
+
+\de{
+    Sei $B = (V,E)$ ein endlicher Baum mit $V \subseteq E$. Der \red{Prüfercode} von B lässt sich eindeutig induktiv berechnen:
+    \begin{itemize}
+        \item $|V| = 2: P(B) = \emptyset$
+        \item $|V| \ge 2:$ Sei b das kleinste Blatt von B, $a_1$ der Nachbar von B und $w := P((V \bs \{b\}), (E \bs \{a_1, b\}))$. Dann gilt $P(B) = a_1w$
+    \end{itemize}
+}
+
+\an{
+    Der Prüfercode ist ein Wort der Länge $|V| - 2$ im Alphabet V. Die Buchstaben die nicht vorkommen, sind genau die Blätter von B.
+}
+
+\ex
+\begin{itemize}
+    \item $B = (V,E)$ mit $V = \{1,2,3,4,5\}$ und $E = \{\{1,2\}, \{2,3\}, \{3,4\}, \{3,5\}\}$\\
+    Prüfercode: 234
+    \item $B = (V,E)$ mit $V = \{1,2,3,4,5,6\}$ und\\
+    $E =  \{\{1,2\}, \{1,3\}, \{1,4\}, \{1,5\}, \{1,6\}\}$\\
+    Prüfercode: 1111
+\end{itemize}
+
+Umgekehrt erhalten wir aus einem Prüfercode einen Baum:\\
+Sei $w = a_1, \dots, a_{n-2}$ ein Wort in $\{1, \dots, n\}$
+\begin{itemize}
+    \item Falls $w =\emptyset: B = (\{1,2\}, \{\{1,2\}\})$ 
+    \item Sonst: Konstruiere ein Wort $b_1, \dots, b_{n-2}$ mit
+    \begin{itemize}
+        \item Sei $b_1$ das kleinste Element von $V \bs \{a_1, \dots, a_{n-2}\}$.
+        \item Für $i \in \{1, \dots, n-3\}$ sei $b_{i+1}$ das kleinste Element aus\\
+        $V \bs \{b_1, \dots, b_i, a_{i+1}, \dots, a_{n-2}\}$.
+        \item Sei $e = V \bs \{b_1, \dots, b_{n-2}\}$.
+    \end{itemize}
+    Dann ist $E = \{\{a_1, b_1\}, \dots, \{a_{n-2}, b_{n-2}\}, e\}$ und $V = \{1, \dots, n\}$.
+\end{itemize}
+
+\newpage
+\se{
+    Jedes Wort der Länge $n-2$ in den Buchstaben $\{1, \dots, n\}$ ist\\
+    Prüfercode genau eines Baumes mit Kantenlänge $V := \{1, \dots, n\}$
+}
+\pr{
+    Induktion über n:\\
+    \underline{$A_n$} ist die Aussage: Sei $|V| = n$. Dann ist jedes Wort in V der Länge $n-2$ ein Prüfercode genau eines Baumes mit Knotenmenge V.
+
+    \underline{$n = 2$:} Klar, da es nur einen Baum mit zwei Knoten gibt.\\
+    \underline{$n \geq 3$:} Nach IV ist $a_1, \dots, a_{n-3}$ der Prüfercoe eines Baumes B' mit Knotenmenge $V \bs \{b_1\}$, wobei $b_1$ das kleinste Element von\\
+    $V \bs \{a_1, \dots, a_{n-3}\}$ ist.\\
+    Die Blätter von B' sind $(V \bs \{b_1\}) \bs \{a_1, \dots, a_{n-3}\}$, d.h. $b_1$ ist kleiner als alle Blätter von B' $\iff B := (V, (B') \cup \{\{a_1, b_1\}\})$ hat den Prüfercode $a_1P(B')$.
+}
+
+\subsection{Spannbäume}
+
+\de{
+    Sei $G = (V,E)$ ein Graph. Ein \red{Spannbaum} von G ist ein Subgraph B von G mit
+    \begin{itemize}
+        \item $V(B) = V$
+        \item B ist ein Baum
+    \end{itemize}
+}
+
+Jeder endliche zusammenhängende Graph hat einen Spannbaum. Um diesen zu erhalten werden solange Kanten aus Kreisen gelöscht, bis keine Kreise mehr vorhanden sind.
+
+\de{
+    Sei $G = (V,E)$ ein endlicher Graph.\\
+    \red{$\tau(G)$} bezeichnet die Anzahl der Spannbäume von G.
+}
+
+\ex \begin{itemize}
+    \item $\tau(G) = 0 \iff G$ ist nicht zusammenhängend
+    \item $\tau(G) = 1 \iff G$ ist ein Baum
+    \item $\tau(C_n) = n$
+    \item $\tau(K_n) = n^{n-2}$
+\end{itemize}
+
+\subsection{Adjazenzmatrix}
+\de{
+    Sei $G = (\{1, \dots, n\}, E)$ ein Graph. Die \red{Adjazenzmatrix} von G ist die Matrix $A = (a_{ij})_{i,j \in \{1, \dots, n\}}$ mit $a_{ij} = \begin{cases}
+        1 & \text{falls } \{i,j\} \in E\\
+        0 & \text{sonst}
+    \end{cases}$
+
+    Die \red{Gradmatrix} von G ist die Diagonalmatrix $D = (d_{ij})_{i,j \in \{1, \dots, n\}}$ mit $d_{ii} = \deg(i)$
+}
+
+\an{
+    \begin{itemize}
+        \item A und D sind symmetrisch: $A^T = A$ und $D^T = D$.
+        \item Spalten- und Zeilensummen von A sind der Grad:
+        \[
+            d_{ii} = \sum_{i=i}^{n} a_{ij} = \sum_{j=1}^{n} a_{ij} = \deg(i)
+        \]
+    \end{itemize}
+}
+
+\se{
+    Sei $n \geq 2$ und $G = (\{1, \dots, n\}, E)$ ein Graph, A die Adjazenzmatrix von G und D die Gradmatrix von G. Sei $i \in \{1, \dots, n\}$.\\
+    Dann gilt: $\tau(G) = \det(D-A)_{ii}$.
+}
+
+\de{
+    Sei A eine $n \times 1$-Matrix und $i \in \{i, \dots, n\}$.\\
+    Dann ist $A_i$ die Matrix, die entsteht, wenn die i-te Zeile und Spalte von A entfernt werden.
+}
+
+\ex $D-A = \begin{pmatrix}
+    2 & -1 & -1 & 0\\
+    -1 & 2 & -1 & 0\\
+    -1 & 1 & -3& 1\\
+    0 & 0 & -1 & 1
+\end{pmatrix}$.
+
+$\det(D-A)_{33} = \det(\begin{pmatrix}
+    2 & -1 & 0\\
+    -1 & 2 & 0\\
+    0 & -1 & 1
+\end{pmatrix}) = \det(\begin{pmatrix}
+    2 & -1\\
+    -1 & 2
+\end{pmatrix}) = 4 - 1 = 3$
+
+\subsubsection{Multigraphen}
+
+\de{
+    Ein \red{Multigraph} ist ein Tripel $(V, E, i)$ mit $V \cap E = \emptyset$\\
+    mit $i : E \to \{\{a,b\} \st a,b \in V\}$.\\
+    \gray{
+        Somit können Schleifen und Kantendopplungen auftreten.
+    }
+}
+
+\ex $V = \{1\}, E = \{a,b\}, i: E \to \vvec{V}{2} \cup \vvec{V}{1}$
 
 \end{document}
