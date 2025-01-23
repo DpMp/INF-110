@@ -39,6 +39,8 @@
 
 \newcommand{\hcyan}[1]{\colorbox{cyan}{#1}}
 \newcommand{\hgreen}[1]{\colorbox{green}{#1}}
+\newcommand{\hred}[1]{\colorbox{red}{#1}}
+\newcommand{\hdgr}[1]{\colorbox{dgr}{#1}}
 
 \newcommand{\ex}{\green{\textbf{Beispiel: }}}
 \newcommand{\de}[1]{\red{\textbf{Definition: }}\begin{quote}#1\end{quote}}
@@ -73,6 +75,7 @@
 \newcommand{\im}{\text{Im}}
 \newcommand{\tr}{\text{Spur}}
 \newcommand{\eig}{\text{Eig}}
+\newcommand{\pro}{\text{proj}}
 
 
 \setlength{\parindent}{0pt}
@@ -3304,18 +3307,18 @@ Damit gilt:
 \section{Euklidische Vektorräume}
 
 \de{
-    Das \red{SkalarProdukt} in $\R^n$ ist eine Abbildung $\cdot: \R^n \times \R^n \to \R$ mit:
+    Das \red{SkalarProdukt} in $\R^n$ ist eine Abbildung $\bullet: \R^n \times \R^n \to \R$ mit:
     \[
-        u \cdot v = \vvvec{u_1}{\vdots}{u_n} \cdot \vvvec{v_1}{\vdots}{v_n} = u_1 \cdot v_1 + \dots + u_n \cdot v_n
+        u \bullet v = \vvvec{u_1}{\vdots}{u_n} \bullet \vvvec{v_1}{\vdots}{v_n} = u_1 \cdot v_1 + \dots + u_n \cdot v_n
     \]
     für alle $u, v \in \R^n$
 }
 
 \an{
-    $u \cdot v = u^T \cdot v$, wobei bei $u \cdot v$ das SkalarProdukt und bei $u^T \cdot v$ die Matrixmultiplikation gemeint ist.
+    $u \bullet v = u^T \cdot v$, wobei bei $u \cdot v$ das SkalarProdukt und bei $u^T \cdot v$ die Matrixmultiplikation gemeint ist.
 }
 
-\ex $\vvvec{0}{1}{2} \cdot \vvvec{3}{4}{5} = 0 \cdot 3 + 1 \cdot 4 + 2 \cdot 5 = (0 \; 1 \; 2) \cdot \vvvec{3}{4}{5}$
+\ex $\vvvec{0}{1}{2} \bullet \vvvec{3}{4}{5} = 0 \cdot 3 + 1 \cdot 4 + 2 \cdot 5 = (0 \; 1 \; 2) \cdot \vvvec{3}{4}{5}$
 
 \underline{Eigenschaften des Skalarprodukts:}
 
@@ -3323,57 +3326,58 @@ Damit gilt:
     \item ist \red{bilinear}:\\
     $
     \begin{array}{lll}
-        (u_1 + u_2) \cdot v = u_1 \cdot v + u_2 \cdot v &\text{ und } (ru) \cdot v = r (u \cdot v)\\
-        u \cdot (v_1 + v_2) = u \cdot v_1 + u \cdot v_2 &\text{ und } u \cdot (rv) = r (u \cdot v)\\
+        (u_1 + u_2) \bullet v = u_1 \bullet v + u_2 \bullet v &\text{ und } (ru) \bullet v = r (u \bullet v)\\
+        u \bullet (v_1 + v_2) = u \bullet v_1 + u \bullet v_2 &\text{ und } u \bullet (rv) = r (u \bullet v)\\
         \text{für alle } u, u_1, u_2, v, v_1, v_2 \in \R^n &\text{ und } r \in \R
     \end{array}
     $
     \item ist \red{symmetrisch}:\\
-    $u \cdot v = v \cdot u$ für alle $u, v \in \R^n$
+    $u \bullet v = v \bullet u$ für alle $u, v \in \R^n$
     \item ist \red{positiv definit}:\\
-    $u \cdot u \ge 0$ für alle $u \in R^n$ und $u \cdot u = 0 \iff u = 0$
+    $u \bullet u \ge 0$ für alle $u \in R^n$ und $u \bullet u = 0 \iff u = 0$
 \end{enumerate}
 
 \de{
     Sei V ein $\R$-VR.\\
-    Jede Abbildung $\cdot: V \times V \to \R$ mit den Eigenschaften 1-3 wird ein \red{SkalarProdukt} auf V genannt.\\
-    Ist $\cdot$ ein Skalarprodukt, dann nennt man $(V; \cdot)$ einen \red{euklidischen Vektorraum}.
+    Jede Abbildung $\bullet: V \times V \to \R$ mit den Eigenschaften 1-3 wird ein \red{SkalarProdukt} auf V genannt.\\
+    Ist $\bullet$ ein Skalarprodukt, dann nennt man $(V; \cdot)$ einen \red{euklidischen Vektorraum}.
 }
 
 \de{
     Sei V der VR der reellen Polynomfunktionen.\\
-    Die Verknüpfung $\cdot$ mit
+    Die Verknüpfung $\bullet$ mit
     \[
-        p(x) \cdot q(x) := \int_{-1}^{1} p(x)q(x) \cdot dx    
+        p(x) \bullet q(x) := \int_{-1}^{1} p(x)q(x) \cdot dx    
     \]
     ist ein Skalarprodukt(, da es die drei eigenschaften erfüllt).\\
-    Der Vektorraum $(V; \cdot)$ ist euklidisch.
+    Der Vektorraum $(V; \bullet)$ ist euklidisch.
 }
 
 \an{
-    Sei $(V; \cdot)$ ein euklidischer $\R$-VR und $0_V$ sein Nulllvektor. Dann gilt:
+    Sei $(V; \bullet)$ ein euklidischer $\R$-VR und $0_V$ sein Nulllvektor. Dann gilt:
     \[
-        v \cdot 0_V = 0_\R \text{ für alle } v \in V
+        v \bullet 0_V = 0_\R \text{ für alle } v \in V
     \]
 }
 \pr{
+    \vspace{-3em}
     \begin{align*}
-        \phantom{\implies}& \underbrace{v \cdot 0_V}_{\in \R} &=& v \cdot (0_V + 0_V)\\
-        \implies& 0_R + (v \cdot 0_V) &=& v \cdot 0_V + v \cdot 0_V\\
-        \implies& 0_R &=& v \cdot 0_V 
+        \phantom{\implies}& \underbrace{v \bullet 0_V}_{\in \R} &=& v \bullet (0_V + 0_V)\\
+        \implies& 0_R + (v \bullet 0_V) &=& v \bullet 0_V + v \bullet 0_V\\
+        \implies& 0_R &=& v \bullet 0_V 
     \end{align*}
 }
 
 \subsection{\texorpdfstring{Längenmessung in euklidischen $\R$-Vektorräumen}{Längenmessung in euklidischen R-Vektorräumen}}
 
 \de{
-    Die \red{Norm} \red{$\no{v}$} eines Vektors ist durch $\no{v} := \sqrt{v \cdot v}$ definiert. Jeder Vektor v mit der Norm 1 wird ein \red{Einheitsvektor} genannt.
+    Die \red{Norm} \red{$\no{v}$} eines Vektors ist durch $\no{v} := \sqrt{v \bullet v}$ definiert. Jeder Vektor v mit der Norm 1 wird ein \red{Einheitsvektor} genannt.
 }
 
-\ex $\no{\vvec{v_1}{v_2}} = \sqrt{\vvec{v_1}{v_2} \cdot \vvec{v_1}{v_2}} = \sqrt{v_1^2 \cdot v_2^2}$
+\ex $\no{\vvec{v_1}{v_2}} = \sqrt{\vvec{v_1}{v_2} \bullet \vvec{v_1}{v_2}} = \sqrt{v_1^2 + v_2^2}$
 
 \ex Sei $p(x) = x$.\\
-$\no{p(x)} = \no{x} = \sqrt{\int_{-1}^{1}} x \cdot x \; dx = \sqrt{[\frac{x^3}{3}]_{-1}^1} = \frac{1}{3} - (- \frac{1}{3}) = \sqrt{\frac{2}{3}}$
+$\no{p(x)} = \no{x} = \sqrt{\int_{-1}^{1} x \cdot x \; dx} = \sqrt{[\frac{x^3}{3}]_{-1}^1} = \frac{1}{3} - (- \frac{1}{3}) = \sqrt{\frac{2}{3}}$
 
 \subsection{\texorpdfstring{Winkelmessung in euklidischen $\R$-Vektorräumen}{Winkelmessung in euklidischen R-Vektorräumen}}
 
@@ -3384,21 +3388,22 @@ $\no{p(x)} = \no{x} = \sqrt{\int_{-1}^{1}} x \cdot x \; dx = \sqrt{[\frac{x^3}{3
 
 \de{
     Seien $u,v \in V \backslash \{0_V\}$.\\
-    Das eindeutig bestimmte $\alpha \in [0, \pi]$ mit $\cos \alpha = \frac{u \cdot v}{\no{u} \cdot \no{v}}$ heißt \red{Winkel zwischen u und v}.
+    Das eindeutig bestimmte $\alpha \in [0, \pi]$ mit $\cos \alpha = \frac{u \bullet v}{\no{u} \cdot \no{v}}$ heißt \red{Winkel zwischen u und v}.
 }
 
+\newpage
 \de{
-    Sei $(V; \cdot)$ ein euklidischer $\R$-VR.\\
+    Sei $(V; \bullet)$ ein euklidischer $\R$-VR.\\
     Vektoren $u,v \in V \backslash \{0_V\}$ heißen \red{orthogonal}, wenn
     \[
-        u \cdot v = 0_{\R}
+        u \bullet v = 0_{\R}
     \]
     gilt.\\
     \underline{Bezeichnung:} $u \perp v$
 }
 
 \ex \begin{itemize}
-    \item $\vvec{2}{4} \perp \vvec{-4}{2}$, denn $\vvec{2}{4}  \cdot \vvec{-4}{2} = 2 \cdot (-4) + 4 \cdot 2 = 0$
+    \item $\vvec{2}{4} \perp \vvec{-4}{2}$, denn $\vvec{2}{4} \bullet \vvec{-4}{2} = 2 \cdot (-4) + 4 \cdot 2 = 0$
     \item $x \perp x^2$, denn $\int_{-1}^{1} x \cdot x^2 \; dx = [\frac{x^4}{4}]_{-1}^1 = \frac{1}{4} - \frac{1}{4} = 0$
 \end{itemize}
 
@@ -3415,20 +3420,20 @@ $\no{p(x)} = \no{x} = \sqrt{\int_{-1}^{1}} x \cdot x \; dx = \sqrt{[\frac{x^3}{3
     Sind $u_1, \dots, u_t$ paarweise orthogonale Vektoren, dann sind $u_1, \dots, u_t$ linear unabhängig.
 }
 \pr{
-    Sei $c_1 \cdot u_1 + \dots + c_t \cdot u_t = 0_V$\\
-    $\implies \underbrace{r_1u_1 \cdot u_i}_{0_{\R}} + \dots + \underbrace{r_iu_i \cdot u_i}_{\in \R \backslash \{0_{\R}\}} + \dots + \underbrace{r_tu_t \cdot u_i}_{0_{\R}} = \underbrace{0_V \cdot u_i}_{0_{\R}}$\\
-    $\implies r_i \underbrace{(u_i \cdot u_1)}_{\in \R \backslash \{0\}} = 0_{\R}$\\
+    Sei $r_1 \cdot u_1 + \dots + r_t \cdot u_t = 0_V$\\
+    $\implies \underbrace{r_1u_1 \bullet u_i}_{0_{\R}} + \dots + \underbrace{r_iu_i \bullet u_i}_{\in \R \backslash \{0_{\R}\}} + \dots + \underbrace{r_tu_t \bullet u_i}_{0_{\R}} = \underbrace{0_V \bullet u_i}_{0_{\R}}$\\
+    $\implies r_i \underbrace{(u_i \bullet u_1)}_{\in \R \backslash \{0\}} = 0_{\R}$\\
     $\implies r_i = 0_{\R}$ für $i = 1, \dots, t$; d.h. $u_1, \dots, u_t$ sind linear unabhängig.
 }
 
 \newpage
 \ex $\vvvec{1}{1}{1}, \vvvec{1}{1}{-2}, \vvvec{1}{-1}{0}$ sind drei orthogonale Vektoren, denn:
 \[
-    \vvvec{1}{1}{1} \cdot \vvvec{1}{1}{-2} = 0, \vvvec{1}{1}{1} \cdot \vvvec{1}{-1}{0} = 0, \vvvec{1}{1}{-2} \cdot \vvvec{1}{-1}{0} = 0
+    \vvvec{1}{1}{1} \bullet \vvvec{1}{1}{-2} = 0, \vvvec{1}{1}{1} \bullet \vvvec{1}{-1}{0} = 0, \vvvec{1}{1}{-2} \bullet \vvvec{1}{-1}{0} = 0
 \]
 Diese drei Vektoren sind linear unabhängig, denn:\\
 $\phantom{\implies} r_1 \cdot \vvvec{1}{1}{1} + r_2 \cdot \vvvec{1}{1}{-2} + r_3 + \cdot \vvvec{1}{-1}{0} = \vvvec{0}{0}{0}$\\
-$\implies r_1 \cdot \vvvec{1}{1}{1} \cdot \vvvec{1}{1}{1} + r_2 \cdot 0 + r_2 \cdot 0 = \vvvec{0}{0}{0} \cdot \vvvec{1}{1}{1}$\\
+$\implies r_1 \cdot \vvvec{1}{1}{1} \bullet \vvvec{1}{1}{1} + r_2 \cdot 0 + r_2 \cdot 0 = \vvvec{0}{0}{0} \bullet \vvvec{1}{1}{1}$\\
 $\implies r_1 \cdot 3 = 3r_1 = 0 \implies r_1 = 0$\\
 Analog erhält man $r_2, r_3 = 0$
 
@@ -3437,7 +3442,7 @@ Analog erhält man $r_2, r_3 = 0$
 \de{
     Sei $(v; \cdot)$ ein euklidischer $\R$-VR und U ein UVR von V.
     \[
-        U^{\perp} := \{v \st v \in V, u \cdot v = 0_{\R} \text{ für alle } u \in U\}
+        U^{\perp} := \{v \st v \in V, u \bullet v = 0_{\R} \text{ für alle } u \in U\}
     \]
     heißt \red{Orthogonalraum} von U in V.
 }
@@ -3464,12 +3469,12 @@ Analog erhält man $r_2, r_3 = 0$
 
 \newpage
 \an{
-    $U = \spann{u_1, \dots, u_t} \implies U^{\perp} = \{v \st v \in V, u_1 \cdot v = \dots = u_t \cdot v = 0_{\R}\}$, denn:
+    $U = \spann{u_1, \dots, u_t} \implies U^{\perp} = \{v \st v \in V, u_1 \bullet v = \dots = u_t \bullet v = 0_{\R}\}$, denn:
     \begin{align*}
         u \in U &\implies \exists k_1, \dots, k_t \in \R: &u =& k_1u_1 + \dots + k_tu_t\\
-        &\implies& u \cdot v =& (k_1u_1 + \dots + k_tu_t) \cdot v\\
-        &\implies&=& k_1u_1 \cdot v + \dots + k_tu_t \cdot v\\
-        &\implies&=& k_1 \cdot 0_{\R} + \dots + k_t \cdot 0_{\R}\\
+        &\implies& u \bullet v =& (k_1u_1 + \dots + k_tu_t) \bullet v\\
+        &\implies&=& k_1u_1 \bullet v + \dots + k_tu_t \bullet v\\
+        &\implies&=& k_1 \bullet 0_{\R} + \dots + k_t \bullet 0_{\R}\\
         &\implies&=& 0_{\R} + \dots + 0_{\R} = 0_{\R}
     \end{align*}
 }
@@ -3482,7 +3487,7 @@ Analog erhält man $r_2, r_3 = 0$
 
 $U^{\perp}$ enthält alle $\vvvec{x}{y}{z} \in \R^3$ mit:
 \[
-    \vvvec{1}{1}{1} \cdot \vvvec{x}{y}{z} = \hcyan{(1 \; 1 \; 1)} \cdot \vvvec{x}{y}{z} = 0_{\R}, \vvvec{1}{2}{3} \cdot \vvvec{x}{y}{z} = \hcyan{(1 \; 2 \; 3)} \cdot \vvvec{x}{y}{z} = 0_{\R}
+    \vvvec{1}{1}{1} \bullet \vvvec{x}{y}{z} = \hcyan{(1 \; 1 \; 1)} \cdot \vvvec{x}{y}{z} = 0_{\R}, \vvvec{1}{2}{3} \bullet \vvvec{x}{y}{z} = \hcyan{(1 \; 2 \; 3)} \cdot \vvvec{x}{y}{z} = 0_{\R}
 \]
 $\implies$ zu lösen ist das homogene LGS mit der Koeffizientenmatrix
 \[
@@ -3503,5 +3508,148 @@ Sei $A \in \R^{m \times n}$
     \item ${\col(A)}^{\perp} = \ker(A^{\perp})$
 \end{itemize}
 
+\subsection{Orthogonalbasen}
+
+\de{
+    Eine Basis $\{b_1, \dots, b_t\}$ eines UVR U von $\R^n$ heißt eine \red{Orthogonalbasis}, wenn
+    \[
+        \forall i, j \in \{1, \dots, t\}, i \ne j: b_i \bullet b_j = 0_{\R}
+    \]
+}
+
+\ex \begin{itemize}
+    \item $\{\vvvec{1}{1}{0}, \vvvec{1}{-1}{0}, \vvvec{0}{0}{1}\}$ ist eine Orthogonalbasis von $\R^3$.
+    \item $\{\vvvec{1}{1}{1}, \vvvec{1}{1}{0}, \vvvec{1}{0}{1}\}$ ist keine Orthogonalbasis von $\R^3$.
+\end{itemize}
+
+\se{
+    Ist $\{b_1, \dots, b_t\}$ eine Orthogonalbasis von $\spann{b_1, \dots, b_t}$ und\\
+    $v \in \spann{b_1, \dots, b_t}$, dann gilt:
+    \[
+        v = \frac{v \bullet b_1}{b_1 \bullet b_1} \cdot b_1 + \dots + \frac{v \bullet b_t}{b_t \bullet b_t} \cdot b_t
+    \]
+}
+\pr{
+    Sei $v$ als Linearkombination $v = r_1b_1, \dots, r_tb_t$. Multipliziere mit $b_i$ für $i \in \{1, \dots, t\}$.\\
+    $v \bullet b_i = r_1b_1 \bullet b_1 + \dots + r_ib_i \bullet b_i + \dots + r_tb_t \bullet b_i$\\
+    $\phantom{v \bullet b_i} = r_1 (b_1 \bullet b_i) + \dots + r_i (b_i \bullet b_i) + \dots + r_t (b_t \bullet b_i)$\\
+    $\phantom{v \bullet b_i} = r_i (b_i \bullet b_i)$
+    
+    $\implies \forall i \in \{1, \dots, t\}: r_i = \frac{v \bullet b_i}{b_1 \bullet b_i}$.
+}
+
+\ex $\hgreen{$\vvvec{0}{8}{15}$} \in \spann{\hdgr{$\vvvec{1}{1}{0}$}, \hcyan{$\vvvec{1}{-1}{0}$}, \hred{$\vvvec{0}{0}{1}$}}$
+
+{\small$r_1 = \frac{\hgreen{$\vvvec{0}{8}{15}$} \bullet \hdgr{$\vvvec{1}{1}{0}$}}{\hdgr{$\vvvec{1}{1}{0}$} \bullet \hdgr{$\vvvec{1}{1}{0}$}} = 4$,
+$r_2 = \frac{\hgreen{$\vvvec{0}{8}{15}$} \bullet \hcyan{$\vvvec{1}{-1}{0}$}}{\hcyan{$\vvvec{1}{-1}{0}$} \bullet \hcyan{$\vvvec{1}{-1}{0}$}} = -4$,
+$r_3 = \frac{\hgreen{$\vvvec{0}{8}{15}$} \bullet \hred{$\vvvec{0}{0}{1}$}}{\hred{$\vvvec{0}{0}{1}$} \bullet \hred{$\vvvec{0}{0}{1}$}} = 15$}
+
+\subsubsection{Orthonormalbasen}
+\de{
+    Eine Orthogornalbasis $\{b_1, \dots, b_t\}$ heißt eine \red{Orthonormalbasis},\\
+    wenn $\no{b_i} = 1$ für $i = 1, \dots, t$ gilt.
+}
+
+\an{
+    $\no{b_i} = \sqrt{b_i \bullet b_i} = 1 \iff b_i \bullet b_i = 1$
+}
+
+\an{
+    Ist $\{b_1, \dots, b_t\}$ eine Orthogonalbasis, dann ist $\{\frac{b_1}{\no{b_1}}, \dots, \frac{b_t}{\no{b_t}}\}$ eine Orthonormalbasis.
+}
+
+\ex Orthogonalbasis $\{\vvvec{1}{1}{0}, \vvvec{1}{-1}{0}, \vvvec{0}{0}{1}\}$ des $\R^3$\\
+$\implies$ Orthonormalbasis $\{\frac{1}{\sqrt{2}}\vvvec{1}{1}{0}, \frac{1}{\sqrt{2}}\vvvec{1}{-1}{0}, \vvvec{0}{0}{1}\}$ des $\R^3$
+
+\subsubsection{Orthogonale Projektion}
+
+\underline{Gegeben:} \begin{itemize}
+    \item euklidischer $\R$-VR $(V; \bullet)$
+    \item UVR $U = \spann{u}$ von V
+    \item Orthogonalraum $U^{\perp}$ von U in V
+    \item $v \in V$
+\end{itemize}
+\underline{Gesucht:} $\hat{v} \in U, w \in U^{\perp}$ mit $v = \hat{v} + w$
+
+\underline{Ansatz:} $\hat{v} = ru$ mit $r \in \R$\\
+$v = ru + w \implies v \bullet u = (ru + w) \bullet u = r(u \bullet u) + \underbrace{w \bullet u}_{0_{\R}} \implies r = \frac{v \bullet u}{u \bullet u}$
+
+Für $\hat{v} = \frac{v \bullet u}{u \bullet u} \cdot u$ und $w = v - \frac{v \bullet u}{u \bullet u} \cdot u$ gilt $v = \hat{v} + w$
+
+\newpage
+\ex $V = \R^2$ mit Standardskalarprodukt $\bullet$\\
+$u = \vvec{1}{1}$ und $v = \vvec{2}{-1}$\\
+\underline{Gesucht:} $\hat{v} \in \spann{u}, w \in \spann{u}^{\perp}$ mit $v = \hat{v} + w$
+
+$\hat{v} = \frac{\vvec{2}{-1} \bullet \vvec{1}{1}}{\vvec{1}{1} \bullet \vvec{1}{1}} \vvec{1}{1} = \frac{1}{2} \cdot \vvec{1}{1} = \vvec{\frac{1}{2}}{\frac{1}{2}} \in \spann{u}$\\
+$w = v - \hat{v} = \vvec{2}{-1} - \vvec{\frac{1}{2}}{\frac{1}{2}} = \vvec{\frac{3}{2}}{-\frac{3}{2}} \in \spann{u}^{\perp}$
+
+\se{
+    Sei U ein UVR des $\R^n$. Dann ist jeder Vektor $v \in \R^n$ in der Form $v = \hat{v} + w$ mit $v \in \spann{U}$ und $w \in \spann{u}^{\perp}$ darstellbar.
+}
+
+\an{
+    Kennt man eine Orthogonalbasis $\{b_1, \dots b_t\}$ von U, dann kann man $\hat{v}$ wie folgt berechnen:
+    \[
+        \hat{v} = \frac{v \bullet b_1}{b_1 \bullet b_1} \cdot b_1 + \dots + \frac{v \bullet b_t}{b_t \bullet b_t} \cdot b_t
+    \]
+}
+\an{
+    Gilt $v \in V$, dann ist $\hat{v} = v$ und $w = 0_{\R^n}$
+}
+\pr{
+    Sei $\{b_1, \dots, b_t\}$ eine Orthogonalbasis des UVR U von $\R^n$ und sei\\
+    $\hat{v} = \frac{v \bullet b_1}{b_1 \bullet b_1} \cdot b_1 + \dots + \frac{v \bullet b_t}{b_t \bullet b_t} \cdot b_t$
+    \begin{enumerate}
+        \item Offensichtlich gilt $v \in \spann{b_1, \dots, b_t}$.
+        \item
+        \begin{align*}
+            w \bullet b_i &= v \bullet b_i - \hat{v} \bullet b_i\\
+            &= v \bullet b_i - (\frac{v \bullet b_1}{b_1 \bullet b_1} b_1 + ... + \frac{v \bullet b_i}{b_i \bullet b_i} b_i + ... + \frac{v \bullet b_t}{b_t \bullet b_t} b_t) \bullet b_i\\
+            &= v \bullet b_i - (0_{\R} + \dots + \frac{v \bullet b_i}{b_i \bullet b_i} b_i \bullet b_i + ... + 0_{\R})\\
+            &= 0_{\R} \implies w \in \spann{\{b_1, \dots, b_t\}}^{\perp} = U^{\perp}
+        \end{align*}
+    \end{enumerate}
+}
+
+Für $U = \spann{b_1, \dots, b_t}$ und $\hat{v} = \frac{v \bullet b_1}{b_1 \bullet b_1} \cdot b_1 + \dots + \frac{v \bullet b_t}{b_t \bullet b_t} \cdot b_t$ schreibt man kurz:
+\[
+    \red{\hat{v} = \pro_U(v)}
+\]
+
+\ex $\pro_{\spann{\vvec{1}{1}}}\vvec{2}{-1} = \vvec{\frac{1}{2}}{\frac{1}{2}}$
+
+\subsubsection{Gram-Schmidt-Verfahren zur Konstruktion von Orthogonalbasen}
+
+\se{
+    Sei $\{u_1, \dots, u_t\}$ eine Basis eines UVR U des $\R^n$.\\
+    Dann kann eine Orthogonalbasis $\{b_1, \dots, b_t\}$ von U folgendermaßen konstruiert werden:
+    \begin{align*}
+        b_1 &:= u_1\\
+        b_2 &:= u_2 - \pro_{\spann{b_1}} u_2\\
+        b_3 &:= u_3 - \pro_{\spann{b_1, b_2}} u_3\\
+        &\vdots\\
+        b_t &:= u_t - \pro_{\spann{b_1, \dots, b_{t-1}}} u_t
+    \end{align*}
+    Kurz:
+    \begin{align*}
+        b_1 &:= u_1\\
+        b_{i+1} &:= u_{i+1} - \pro_{\spann{b_1, \dots, b_i}} u_{i+1} \text{ für } i = 1, \dots, t-1
+    \end{align*}
+}
+
+\ex $U = \spann{\vvvec{1}{1}{1}, \vvvec{1}{1}{0}, \vvvec{1}{0}{0}}$
+\begin{itemize}
+    \item \hcyan{$\vvvec{1}{1}{1}$}
+    \item $\vvvec{1}{1}{0} - \frac{\vvvec{1}{1}{0} \bullet \vvvec{1}{1}{1}}{\vvvec{1}{1}{1} \bullet \vvvec{1}{1}{1}} \cdot \vvvec{1}{1}{1} = \vvvec{1}{1}{0} - \frac{2}{3} \cdot \vvvec{1}{1}{1} = \frac{1}{3} \cdot \hcyan{$\vvvec{1}{1}{-2}$}$
+    \item $\vvvec{1}{0}{0} - \frac{\vvvec{1}{0}{0} \bullet \vvvec{1}{1}{1}}{\vvvec{1}{1}{1} \bullet \vvvec{1}{1}{1}} \cdot \vvvec{1}{1}{1} - \frac{\vvvec{1}{0}{0} \bullet \vvvec{1}{1}{-2}}{\vvvec{1}{1}{-2} \bullet \vvvec{1}{1}{-2}} \cdot \vvvec{1}{1}{-2} = \frac{1}{2} \cdot \hcyan{$\vvvec{1}{-1}{0}$}$
+\end{itemize}
+\begin{center}
+    $\implies \{\vvvec{1}{1}{1}, \vvvec{1}{1}{-2}, \vvvec{1}{-1}{0}\}$ ist eine Orthogonalbasis von U
+\end{center}
+
+\an{
+    Wendet man das Verfahren auf einen Vektor an, der linear abhängig von den bereits behandelten Vektoren ist, so erhält man den Nullvektor.
+}
 
 \end{document}
