@@ -3305,7 +3305,7 @@ Die Antwort darauf liefert die Stirlingsche Partitionszahl $S_{n,k} \in \N$
 \subsection{Ordnungsrelationen}
 
 \de{
-    Eine Relation heißt \red{partielle Ordnung}, ffalls sie reflexiv, transitiv und antisymmetrisch ist.\\
+    Eine Relation heißt \red{partielle Ordnung}, falls sie reflexiv, transitiv und antisymmetrisch ist.\\
     Wir schreiben $a \subseteq b$ statt $(a,b) \in R$
 }
 
@@ -3694,5 +3694,244 @@ $\det(D-A)_{33} = \det(\begin{pmatrix}
 }
 
 \ex $V = \{1\}, E = \{a,b\}, i: E \to \vvec{V}{2} \cup \vvec{V}{1}$
+
+\newpage
+\de{
+    Sei $f: A \to B$ eine Abbildung und $A' \subseteq A$. Dann ist die \red{Einschränkung} von f auf A' die Abbildung\\
+    $f|_{A'}: A' \to B$ mit $(f|_{A'})(a) = f(a)$ für alle $a \in A'$.
+}
+
+\subsubsection{Kantenkontraktion}
+
+\de{
+    Sei $G = (V,E,i)$ ein Multigraph und $e \in E$. Dann ist $G/v := (V \bs i(e) \cup \{e\}, E \bs \{e\}, i')$ mit
+    \begin{itemize}
+        \item $i'(e') = i(e')$, falls $i(e') \subseteq V \bs e$
+        \item $i'(e') = \{e, a\}$, falls $i(e = \{a,b\})$ mit $\begin{cases}
+            a \notin i(e) \text{und}\\
+            b \in i(e)
+        \end{cases}$
+        \item $i'(e') = \{e\}$, falls $i'(e') \subseteq i(e)$
+    \end{itemize}
+}
+
+\lem{
+    Sei $G=(V,E,i)$ ein Multigraph und $e \in E$. Dann ist $\tau(G) = \tau(G-e) + \tau(G/e)$
+}
+\pr{
+    Es gibt zwei Arten von Spannbäumen:
+    \begin{enumerate}
+        \item Die Spannbäume, die die Kante e entahlten: Wenn $e \in B$ und B ein Spannbaum von G ist, dann ist $B/e$ ein Spannbaum von $G/e$ und umgekehrt.
+        \item Die Spannbäume, die die Kante e nicht enthalten: Das sind genau die Spannbäume von $G-e$.
+    \end{enumerate}
+}
+
+\pr{
+    (Satz von Kirchhoff:)
+
+    Sei $|V| \ge 2$. Mit Induktion:\\
+    \underline{$A_n$:} Jeder Multigraph mit n Kanten hat $\det((D-A)_{ii})$ Spannbäume.\\
+    \underline{IA:} $|E| = 0: D = A = \begin{pmatrix}
+        0 & 0\\
+        0 & 0
+    \end{pmatrix} \implies (D-A)_{ii} = (0) \implies$\\
+    $\det((D-A)_{ii}) = 0$ und $\tau(G) = 0 \implies A_0$\\
+    \underline{IS:} Sei n mit $A_n$ wahr.\\
+    Sei $G=(V,E,i)$ ein Multigraph mit $|E| = n$ und $e \in E$ mit $|i(e)| = 2$.\\
+    OBdA: Sei $i(e) = \{1,2\}$\\
+    Es gilt $\tau(G) = \tau(G-e) + \tau(G/e)$, wobei $G-e$ und $G/e$ $n-1$ Knoten haben.\\
+    Sei $d_1$ der Grad von 1 und $d_2$ der Grad von 2:
+    \[
+        \text{Sei } D-A = \begin{pmatrix}
+            d_1 & a & - & N_1 & -\\
+            a & d_2 & - & N_2 & -\\
+            | & | & - & - & -\\
+            N_1^T & N_2^T & | & M &\\
+            | & | & | &&
+        \end{pmatrix}
+    \]
+    D-A ist eine quadratische Matrix der Dimension $|V| - 2$ und $N_1, N_2$ sind Vektoren mit $|V|-2$ Spalten.
+
+    Dann ist $D-A$:
+    \[
+        \begin{pmatrix}
+            d_1-1 & a+1 & - & N_1 & -\\
+            a+1 & d_2-1 & - & N_2 & -\\
+            | & | & - & - & -\\
+            N_1^T & N_2^T & | & M &\\
+            | & | & | &&
+        \end{pmatrix} \text{ für } G-e
+    \]
+    \[
+        \begin{pmatrix}
+            d_1 + d_2 - a + 1 & - & N_1 & -\\
+            | & - & - & -\\
+            N_1^T & | & M &\\
+            | & | &&&
+        \end{pmatrix} \text{ für } G/e
+    \]
+    \underline{IV:} $\tau(G-e) = \det(\begin{pmatrix}
+        d_2 - 1 & - & N_2 & -\\
+        | & - & - & -\\
+        N_2^T & | & M &\\
+        | & | &&&
+    \end{pmatrix})$\\
+    \phantom{$\tau(G-e)$} $= \det(\begin{pmatrix}
+        d_2 & - & N & -\\
+        | & - & - & -\\
+        N^T & | & M &\\
+        | & | &&&
+    \end{pmatrix}) + \det(\begin{pmatrix}
+        -1 & 0\\
+        N_2^T & M
+    \end{pmatrix})$
+
+    und $\tau(G/e) = \det(M)$\\
+    Somit gilt: $\tau(G) = \tau(G-e) + \tau(G/e) = \begin{pmatrix}
+        d_2 - 1 & - & N_2 & -\\
+        | & - & - & -\\
+        N_2^T & | & M &\\
+        | & | &&&
+    \end{pmatrix} = \det((D-a)_{11})$
+
+    e kann durch eine Kante mit Endpunkten i,j für $i \ne j$ gesetzt werden. Damit ist $A_n$ wahr.
+}
+
+\newpage
+\section{Planare Graphen}
+
+\de{
+    Eine \red{Strecke} in $\R^2$ ist eine Menge der Form $[x,y] := \{tx + (1-t) \cdot y \st 0 \le t \le 1\}$ mit $x,y \in \R^2$. Dabei sind x und y die Endpunkte der Strecke.
+}
+
+\de{
+    Ein \red{Polygommzug} ist eine Teilmenge $P \subseteq \R^2$ mit
+    \[
+        P := \bigcup_{i=0}^n [x_i, x_{i+1}] \text{ mit } x_0, \dots, x_n \in \R^2
+    \]
+    Er heißt \red{einfach}, falls $\forall x \in P$:
+    \begin{itemize}
+        \item Fall 1: $x \in P \bs \{x_1, \dots, x_{n-1}\}: \nexists i \in \{0, \dots, n\}: x \in [x_i,x_j]$
+        \item Fall 2: $x \in \{x_1, \dots, x_{n-1}\}: |\{i \st x \in [x_i,x_{i+1}]\}| = 2$
+    \end{itemize}
+    Für einen einfachen Polynomzug sind $x_0, x_n$ die \red{Endpunkte} und $P \bs \{x_0, x_n\}$ das \red{Innere}
+}
+
+\de{
+    Ein ebenere Graph ist ein Multigraph $G=(V,E,i)$ mit
+    \begin{itemize}
+        \item $V \subseteq \R^2$
+        \item $i: E \to \vvec{V}{2}$ ist injektiv
+        \item E ist die Menge von einfachen Polygonzügen, sodass\\
+        $\forall e,e' \in E: e \cap e' = i(e) \cap i(e')$
+        \item $I(e) =$ Menge der Endpunkte von e
+    \end{itemize}
+    Insbesondere definiert $G=(V,E,i)$ einen Graphen $(V, i[E])$ im herkömmlichen Sinn.\\
+    Wir nennen $(V,E,i)$ eine \red{Zeichnung} oder \red{planare Einbettung} von $(V, i[E])$.
+}
+
+\de{
+    Ein Graph ist planar, falls er eine Zeichnung besitzt.
+}
+
+\newpage
+\ex Planare Graphen sind: \begin{itemize}
+    \item $P_n$
+    \item endliche Bäume
+    \item $C_n$
+    \item $K_n$, falls $n \le 4$
+    \item $K_{3,2}$
+\end{itemize}
+\ex nicht planare Graphen sind: \begin{itemize}
+    \item $K_n$, falls $n \ge 5$
+    \item $K_{3,3}$
+\end{itemize}
+\ex Dies findet Anwendung bei \begin{itemize}
+    \item Schienennetzen
+    \item Straßennetzen
+    \item Chipdesign
+\end{itemize}
+
+\an{
+    Kanten in planaren Graphen können auch ausschließlich mit Strecken, statt durch Polygonzüge gezeichnet werden.
+}
+
+\subsection{Eulersche Polyederformel}
+
+Sei $M \subseteq \R \times \R$. Definiere eine Äquivalenzrelation auf M:\\
+$(a,b) \in R \iff \exists$ Polygonzug in M von a nach b.
+\begin{itemize}
+    \item reflexiv: $[a,a]$ ist ein Polygonzug von a nach a.
+    \item symmetrisch: Ein Polygonzug von a nach b ist auch ein Polygonzug von b nach a.
+    \item transitiv: Sind [a,b] und [b,c] Polygonzüge von a nach b und b nach c, dann ist [a,b,c] ein Polygonzug von a nach c.
+\end{itemize}
+
+\de{
+    Sei $(V,E,i)$ ein ebener Graph. Die Äquivalenzklassen von\\
+    $M:= \R^2 \bs \bigcup_{e \in E} e$ heißen \red{Flächen} von G.
+}
+
+\ex $K_4$ hat vier Flächen.
+
+\se{
+    Sei $G = (V,E,i)$ ein (endlicher, nicht-leerer,) zusammenhängender und ebener Graph und F die Menge der Flächne von G. Dann gilt:
+    \[
+        |V| - |E| + |F| = 2
+    \]
+}
+
+\pr{
+    Induktion über $|E| = m$:\\
+    Sei $n = |V| \ge 1$. Da G zusammenhängend ist, gilt: $m \ge n - 1$.
+
+    \underline{IA:} $m = n - 1 \implies$ G ist Baum $\implies |F| = 1$.\\
+    $|V| - |E| + |F| = n - (n - 1) + 1 = 2$ \checkmark
+
+    \underline{IS:} Sei $m \ge n - 1$ und $e \in E$ eine Kante eines Kreises. Diese existiert, da G kein Baum ist.\\
+    $G' := G-e$. Sei F' die Menge der Flächen von G'.\\
+    Nach \underline{IV} gilt: $2 = n - (m-1) + |F'|$\\
+    Es gilt also: $|F'| = |F| - 1$ und $|E'| = |E| - 1$.
+
+    Wenn sich also die Kantenanzahl durch wiederholte Anwendung dieser Methode um x verringert, dann verringert sich auch die\\ Flächenanzahl um x:
+    \[
+        2 = n - (m + x) + (|F| - x) = n - m + |F| = |V| - |E| + |F|
+    \]
+}
+
+\newpage
+\section{Triangulierungen}
+
+\de{
+    Ein ebener Graph heißt \red{Triangulierung}, falls jede Fläche von genau drei Kanten begrenzt wird.
+}
+
+\ex Dies ist bei dem ebenen Graph $K_4$ der Fall.
+
+\prop{
+    Sei $G = (V,E,i)$ ein ebener Graph mit mindestens drei Knote. Dann ist G genau dann eine Triangulierung, wenn G ein maximaler ebener Graph mit Knotenmenge V ist, es also keinen ebenen Graphen $(V,E',i')$ mit $E \subset E'$ und $i'|_E = i$ gibt.
+}
+
+\pr{
+    \underline{$\impliedby:$} Widerspruchsannahme: Der Graph ist keine Triangulierung, es gibt also eine Fläche, die von mindestens vier Kanten begrenzt wird.\\
+    Dann können wir Kantenhinzufügen, der Graph ist also nicht maximal.\\
+    \gray{Nach dem Prinzip: $(a \implies b) \iff (\n{a} \implies \n{b})$}
+
+    \underline{$\implies:$} Sei G eine Triangulierung: Wenn wir veruschen eine neue Kante zwischen zwei Knoten zu finden, so muss diese Kante in eine Fläche hinein- und hinausgehen, da alle Knoten, die in Kanten sind, die an dieser Fläche beteiligt sind, bereit Nachbarn sind.\\
+    Deshalb lässt sich keine Kante hinzufügen.
+}
+
+\co{
+    Ein planarer Graph mit mindestens drei Knoten hat höchstens $3|V| - 6$ Kanten.
+}
+
+\pr{
+    Sei $G = (V,E,i)$ die Einbettung eines planaren Graphen.\\
+    OBdA ist G eine Triangulierung. Nach der Eulerschen Polyederformel gilt: $|V| - |E| + |F| = 2$.\\
+    Außerdem gilt: $2 \cdot |E| = 3 \cdot |F|$\\
+    \gray{Da jede Fläche von 3 Kanten begrenzt wird und jede Kante drei Flächen begrenzt.}\\
+    Also gilt: $|V| - |E| + \frac{2}{3} \cdot E = 2 \iff 3 |V| - |E| = 6$
+}
+
+\ex $K_5: |V| = 5, |E| = \frac{5 \cdot 4}{2} = 10 \ge 3 \cdot 5 - 6 = 9$
 
 \end{document}
