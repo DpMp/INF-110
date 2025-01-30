@@ -77,6 +77,8 @@
 \newcommand{\eig}{\text{Eig}}
 \newcommand{\pro}{\text{proj}}
 
+\newcommand{\bs}{\backslash}
+
 
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{3pt} 
@@ -3651,5 +3653,244 @@ Für $U = \spann{b_1, \dots, b_t}$ und $\hat{v} = \frac{v \bullet b_1}{b_1 \bull
 \an{
     Wendet man das Verfahren auf einen Vektor an, der linear abhängig von den bereits behandelten Vektoren ist, so erhält man den Nullvektor.
 }
+
+\subsection{Bestapproximation}
+
+Gesucht ist die bestmögliche Näherungslösung für ein LGS $Ax = b$ mit $b \notin \col(A)$, d.h. $Ax = b$ hat keine Lösung.
+
+\ex Gegeben sind die Punkte $P_i = (x_i, y_i) (i = 1, \dots, t)$.\\
+Gesucht ist die \red{Ausgleichsgerade}, also die bestmögliche Näherungsgerade "durch diese Punkte".\\
+Das LGS $y_i = mx_i+n$ hat keine Lösung. Man sucht die beste \red{Approximation} der Punkte durch eine Gerade.
+
+\se{
+    Sei U ein UVR des $\R^n, v \in \R^n$ und $\hat{v} = \pro_Uv$. Dann gilt:
+    \[
+        \no{v - \hat{v}} \le \no{v - u} \text{ für alle } u \in U
+    \]
+    Dann wird $\hat{v}$ die Bestapproximation von v durch ein Element on U genannt, denn $\hat{v}$ hat unter allen Elementen von U den kleinstmöglichen Abstand zu v.
+}
+\pr{
+    \vspace{-3em}
+    \begin{align*}
+        \no{v-u}^2 &= \no{(v-\hat{v})+(\hat{v}-u)}^2\\
+        &= \no{v-\hat{v}}^2+ \no{\hat{v}-u}^2
+        &\ge \no{v-\hat{v}}^2
+    \end{align*}
+    also gilt $\no{v - \hat{v}} \le \no{v - u} \text{ für alle } u \in U$
+}
+
+\underline{Gegeben:} LGS $Ax = b$, das keine Lösung hat, d.h. $b \notin \col(A)$, d.h.
+\[
+    \nexists x = \vvvec{x_1}{\vdots}{x_n}: Ax = (s_1, \dots, s_n) \cdot \vvvec{x_1}{\vdots}{x_n} = s_1x_1 + \dots + s_nx_n
+\]
+\underline{Gesucht:} $u \in \col(A)$, so dass $\no{b-u}$ minimal ist.\\
+\underline{Lösung:} $u = \pro_{\col(A)}b = \hat{b}$
+
+\ex $\begin{pmatrix}
+    1 & 0\\
+    0 & 1\\
+    1 & 1
+\end{pmatrix} \cdot \vvec{x}{y} = \vvvec{2}{3}{4}$ hat offensichtlich keine Lösung.\\
+Gesucht ist eine Lösung von $A \cdot \vvec{x}{y} = \hat{b}$.
+\[
+    \{\vvvec{1}{0}{1}, \vvvec{0}{1}{1}\} \text {Basis } \col(A) \implies \{\vvvec{1}{0}{1}, \vvvec{-1}{2}{1}\} \text {Orthogonalbasis } \col(A)  
+\]
+Berechnung von $\hat{b} = \pro_{\col(A)}b$:
+\[
+    \hat{b} = \frac{6}{2} \cdot \vvvec{1}{0}{1} + \frac{8}{6} + \vvvec{-1}{2}{1} = \frac{1}{3} \cdot \vvvec{5}{8}{13}
+\]
+Lösen von $A \cdot \vvec{x}{y} = \hat{b} = \frac{1}{3} \cdots \vvvec{5}{8}{13}$:
+\[
+    \vvec{x}{y} = \frac{1}{3} \cdot \vvec{5}{8}
+\]
+Damit haben wir eine optimale Lösung für $Ax = b$ gefunden.
+
+\subsubsection{Allgemeine Lösung für die Bestapproximation}
+
+Gegeben ist ein nicht lösbares LGS $Ax = b$ mit $A = (s_1, \dots, s_n)$.\\
+$b = \hat{b} + w$ mit $\hat{b} \in \col(A)$ und $w \in \col(A)^{\perp}$
+\begin{align*}
+        w \in \col(A)^{\perp} &\iff s_i \bullet (b- \hat{b}) = s_i^T \cdot (b - \hat{b}) = 0_{\R}\\
+        &= \vvvec{s_1^T}{\vdots}{s_n^T} \cdot (b - \hat{b}) = A^T \cdot (b - \hat{b}) = A^Tb - A^T \hat{b} = 0_{\R}\\
+        &\iff A^T\hat{b} = A^Tb\\
+        &\iff A^T \cdot Ax = A^Tb\\
+        &\iff A^TA \dot x = A^Tb
+\end{align*}
+\begin{itemize}
+    \item Das LGS $(A^TA) \cdot x = A^T \cdot b$ wird \red{Normalgleichungssystem} genannt.
+    \item x bezeichnet eine Lösung des Normalgleichungssystem
+    \item Um eine bestmögliche Näherungslösung von $Ax = b$ zu finden genügt es, das Normalgleichungssystem zu lösen.
+    \item Das lineare Ausgleichsproblem ist genau dann eindeutig lösbar, wenn der Rang von A mit der Anzahl der Spalten von A übereinstimmt.
+\end{itemize}
+
+\newpage
+\ex $\begin{pmatrix}
+    1 & 0\\
+    0 & 1\\
+    1 & 1
+\end{pmatrix} \cdot \vvec{x}{y} = \vvvec{2}{3}{4}$
+\[
+    A^T \cdot A = \begin{pmatrix}
+        2 & 1\\
+        1 & 2
+    \end{pmatrix} \text{ und } A^T \cdot b = \vvec{6}{7}
+\]
+Normalgleichungssystem: $\begin{pmatrix}
+    2 & 1\\
+    1 & 2
+\end{pmatrix} \cdot \vvec{x}{y} = \vvec{6}{7}$.\\
+Lösung des Normalgleichungssystem: $\vvec{x}{y} = \frac{1}{3} \cdot \vvec{5}{8}$.\\
+Eine bestmögliche Näherungslösung von $Ax = b$ ist also $\vvec{x}{y} = \frac{1}{3} \cdot \vvec{5}{8}$.
+
+\subsection{Orthogonale Matrizen}
+
+\de{
+    Sei $A \in \R^{n \times n}$. Dann heißt A eine \red{orthogonale Matrix}, wenn gilt: $$A \cdot A^T = E_n$$
+}
+
+\ex \begin{itemize}
+    \item $E_n$ ist orthogonal
+    \item $\begin{pmatrix}
+        0 & -1\\
+        1 & 0
+    \end{pmatrix}$ ist orthogonal
+    \item $\frac{1}{5} \cdot \begin{pmatrix}
+        3 & -4\\
+        4 & 3
+    \end{pmatrix}$ ist orthogonal
+    \item $\begin{pmatrix}
+        \cos(\phi) & -\sin(\phi)\\
+        \sin(\phi) & \cos(\phi)
+    \end{pmatrix}$ ist orthogonal
+\end{itemize}
+
+\an{
+    Bei der Berechnung von $A \cdot A^T$ berechnet man Skalarprodukte der Zeilenvektoren von A:
+    \[
+        A \cdot A^T = E_n \iff z_i \bullet z_j = \begin{cases}
+            1, i = j\\
+            0, i \ne j
+        \end{cases}
+    \]
+}
+
+\an{
+    \begin{itemize}
+        \item $A \in R^{n \times n}$ orthogonal $\iff$ Die Zeilenvektoren von A bilden eine Orthonormalbasis des $\R^n$
+        \item $A \in R^{n \times n}$ orthogonal $\iff$ Die Spaltenvektoren von A bilden eine Orthonormalbasis des $\R^n$
+        \item $A \in R^{n \times n}$ orthogonal $\iff A \cdot A^T = A^T \cdot A = E_n$
+        \item $A \in R^{n \times n}$ orthogonal $\iff A^{-1} = A^T$
+    \end{itemize}
+}
+
+\newpage
+\ex \begin{itemize}
+    \item $E_n^{-1} = E_n$
+    \item $\begin{pmatrix}
+        0 & -1\\
+        1 & 0
+    \end{pmatrix}^{-1} = \begin{pmatrix}
+        0 & 1\\
+        -1 & 0
+    \end{pmatrix}$
+    \item $\frac{1}{5} \cdot \begin{pmatrix}
+        3 & -4\\
+        4 & 3
+    \end{pmatrix}^{-1} = \frac{1}{5} \cdot \begin{pmatrix}
+        3 & 4\\
+        -4 & 3
+    \end{pmatrix}$
+    \item $\begin{pmatrix}
+        \cos(\phi) & -\sin(\phi)\\
+        \sin(\phi) & \cos(\phi)
+    \end{pmatrix}^{-1} = \begin{pmatrix}
+        \cos(\phi) & \sin(\phi)\\
+        -\sin(\phi) & \cos(\phi)
+    \end{pmatrix}$
+    \item $\frac{1}{\sqrt{a^2 + b^2}} \cdot \begin{pmatrix}
+        a & -b\\
+        b & a
+    \end{pmatrix}^{-1} = \frac{1}{\sqrt{a^2 + b^2}} \cdot \begin{pmatrix}
+        a & b\\
+        -b & a
+    \end{pmatrix}$
+    \item $\frac{1}{\sqrt{a^2 + b^2}} \cdot \begin{pmatrix}
+        a & b\\
+        b & -a
+    \end{pmatrix}^{-1} = \frac{1}{\sqrt{a^2 + b^2}} \cdot \begin{pmatrix}
+        a & b\\
+        b & -a
+    \end{pmatrix}$
+\end{itemize}
+
+\subsubsection{Eigenschaften orthogonler Matrizen}
+
+\begin{itemize}
+    \item $A \in \R^{n \times n} \text{ orthogonal } \iff A^{-1}$ existiert $\implies \rg(A) = n$
+    \item $A \in \R^{n \times n} \text{ orthogonal } \implies A \cdot A^T = E_n$
+    \begin{align*}
+        &\implies \det(A \cdot A^T) = \det(E_n)\\
+        &\implies \det(A) \cdot \det(A^T) = 1\\
+        &\implies \det(A) \cdot \det(A) = 1\\
+        &\implies |\det(A) = 1|
+    \end{align*}
+\end{itemize}
+
+\ex Die Abbildung $f: \R^2 \to \R^2: \vvec{x}{y} \mapsto \begin{pmatrix}
+    \cos(\varphi) & \sin(\varphi)\\
+    \sin(\varphi) & -\cos(\varphi)
+\end{pmatrix} \cdot \vvec{x}{y}$ ist eine Drehspiegelung:
+\[
+    \begin{pmatrix}
+        \cos(\varphi) & \sin(\varphi)\\
+        \sin(\varphi) & -\cos(\varphi)
+    \end{pmatrix} = \begin{pmatrix}
+        \cos(\frac{\varphi}{2}) & -\sin(\frac{\varphi}{2})\\
+        \sin(\frac{\varphi}{2}) & \cos(\frac{\varphi}{2})
+    \end{pmatrix} \cdot \begin{pmatrix}
+        1 & 0\\
+        0 & -1
+    \end{pmatrix} \cdot \begin{pmatrix}
+        \cos(\frac{\varphi}{2}) & -\sin(\frac{\varphi}{2})\\
+        \sin(\frac{\varphi}{2}) & \cos(\frac{\varphi}{2})
+    \end{pmatrix}
+\]
+Dabei wird an einer geneigten Gerade durch den Urpsrung gepiegelt.
+
+\newpage
+\begin{itemize}
+    \item Eigenwerte:\\
+    Sei $Av = kv$ mit $v = \vvvec{v_1}{\vdots}{v_n} \in \R \bs \{0_{\R^n}\}$
+
+    $\implies \no{Av} = \no{kv}$
+
+    $\implies \no{(s_1, \dots, s_n) \cdot \vvvec{v_1}{\vdots}{v_n}} = \no{kv}$
+
+    $\implies \no{v_1s_1 + \dots + v_ns_n} = \no{kv}$
+
+    $\implies \sqrt{(v_1s_1 + \dots + v_ns_n) \bullet (v_1s_1 + \dots + v_ns_n)} = \sqrt{kv \bullet kv}$
+
+    $\implies \sqrt{v_1^2(s_1 \bullet s_1) + \dots + v_n^2(s_n \bullet s_n)} = \sqrt{k^2(v \bullet v)}$
+
+    $\implies \no{v} = |k| \cdot \no{v}$ mit $\no{v} > 0$
+
+    $\implies |k| = 1$ mit $k \in \C$
+
+    \an{
+        Für reelle Eigenwerte k gilt dann $k \in \{-1,1\}$, für komplexe ist k der Einheitskreis in der Gaussschen Zahlenebene.
+    }
+    \item Sei $A \in \R^{n \times n}$ eine orthogonale Matrix und $f: \R^n \to \R^n: v \mapsto Av$.\\
+    Dann gilt:
+    \begin{itemize}
+        \item f ist längentreu, d.h. $\no{v} = \no{f(v)}$
+        \item f ist abstandstreu, d.h. $\no{v-u} = \no{f(v) - f(u)}$
+        \item f ist winkeltreu, d.h. $\cos(\sphericalangle(u,v)) = \cos(\sphericalangle(f(u),f(v)))$
+        \item f ist bijektiv
+        \item f bildet jede Orthonormalbasis auf eine Orthonormalbasis ab
+    \end{itemize}
+\end{itemize}
+
+
+
 
 \end{document}
