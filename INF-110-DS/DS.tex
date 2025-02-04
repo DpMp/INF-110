@@ -3046,7 +3046,8 @@ Graph $G_B = (V_B, E_B)$ mit
 \se{
     \begin{enumerate}
         \item Ein endlicher Graph hat genau dann einen geschlossenen Eulerzug, wenn er zusammenhängend ist und jeder Knoten einen geraden Grad hat.
-        \item Ein endicher Graph hat einen offenen Eulerzug, wenn er zusammenhängend ist und genau zwei Knoten mit ungeradem Grad hat.
+        \item Ein endlicher Graph hat einen offenen Eulerzug, wenn er\\
+        zusammenhängend ist und genau zwei Knoten mit ungeradem Grad hat.
     \end{enumerate}
 }
 
@@ -3054,7 +3055,7 @@ Graph $G_B = (V_B, E_B)$ mit
     \begin{enumerate}
         \item \underline{Richtung "$\implies$":} Der Kantenzug geht so oft zu jedem Knoten hin, wie von ihm weg\\
         \underline{Richtung "$\impliedby$":} Sei $G =(V,E)$ zusammenhängend, sodass alle Knoten einen geraden Grad haben. Sei $(v_0, \dots, v_l)$ ein längster Kantenzug in G, in dem alle Kanten verschieden sind.\\
-        Dann ist $u_0 = u_l$, denn sonst hätten $u_0,u_l$ eine ungerade anzahl an Kanten im Kantenzug und der Kantenzug könnte verlängert werden, da $u_0,u_l$ geraden Grad haben.
+        Dann ist $u_0 = u_l$, denn sonst hätten $u_0,u_l$ eine ungerade Anzahl an Kanten im Kantenzug und der Kantenzug könnte verlängert werden, da $u_0,u_l$ geraden Grad haben.
 
         (Widerspruchsannahme) Sei $\{u,v\} \in E$ eine Kante, die nicht durchlaufen wird, dann ist (O.B.d.A $u = u_0$) $(v,u_0,\dots,u_l)$ ein längerer Kantenzug in G.
 
@@ -3150,7 +3151,7 @@ Schreibweisen:
     \item $R = \{(a,a) \st a \in A\}$ ist die Gleichheitsrelation auf a
     \item Auf $A = P(\N): (M,N) \in R \iff |M| = |N|$, d.h. es existiert eine Bijektion $M \to N$
     \item $A = \{1, \dots, n\}$, für gegebenes $\pi \in S_n$:\\
-    $(i,j) \in R \iff \exists k \in \N: \pi^k(i) = j$, d.h. in der Zyklenschreibweise von $\pi$ gibt es einen Tyklus, der i und j enthält.
+    $(i,j) \in R \iff \exists k \in \N: \pi^k(i) = j$, d.h. in der Zyklenschreibweise von $\pi$ gibt es einen Zyklus, der i und j enthält.
     \item Nebenklassen: Sei G eine Gruppe, U eine Untergruppe. $(g,h) \in R \iff gh^{-1} \in U$
     \item Sei A die Menge aller Graphen mit der Knotenmenge $\{1, \dots, n\}$.\\
     $(G,H) \in R \iff G, H$ sind isomorph
@@ -3247,7 +3248,7 @@ Schreibweisen:
 \subsubsection{Partitionen zählen}
 
 Das vorherige Lemma impliziert, dass die Anzahl der Äquivalenzrelationen auf A gleich der Anzahl der Partitionen auf A ist.\\
-Es stellt sich die Frage, wie viele Partitionen mit k ELementen es auf einer n-elementigen Menge gibt.\\
+Es stellt sich die Frage, wie viele Partitionen mit k Elementen es auf einer n-elementigen Menge gibt.\\
 Die Antwort darauf liefert die Stirlingsche Partitionszahl $S_{n,k} \in \N$
 
 \ex $A = \{1,2,3\}, k = 2, n = 3: \{\{1\},\{2,3\}\}, \{\{2\}\{1,3\}\}, \{\{3\}, \{1,2\}\}$\\
@@ -3272,7 +3273,7 @@ Die Antwort darauf liefert die Stirlingsche Partitionszahl $S_{n,k} \in \N$
         \item $\{\{1\}, \dots, \{n\}\}$ ist die einzige n-elementige Partition\\
         von $\{1, \dots, n\}$.
         \item Da die leere Menge kein Element der Partition sein kann, lässt sich zu der Partition aus 1 kein weiteres Element der Partition finden, sodass diese mehr Elemente enthält.\\
-        n Elemente lönnen nicht auf 0 Mengen aufgeteilt werden.
+        n Elemente können nicht auf 0 Mengen aufgeteilt werden.
         \item Beobachtung: $\{1, \dots, n\} = \{1, \dots, n-1\} \cup \{n\}$.\\
         Damit gibt es zwei Arten von Partitionen: $\{n\} \in P$ und\\
         $\{n\} \notin P$.
@@ -3447,7 +3448,7 @@ Aus einer Quasiordnung bekommt man eine Äquivalenzrelation:
         $a' \in a / \sim \implies a' \preceq a$ und $b' \in b / \sim \implies b' \preceq b$.\\
         $a' \preceq a \land b' \preceq b \implies a' \preceq b'$, denn $a' \preceq a \preceq b \preceq b'$.
         \item reflexiv: $a \preceq a \implies a / \sim \le a / \sim$
-        \item anit-symmetrisch: Seien $b / \sim \in A / \sim$ mit $a / \sim \le b / \sim$ und $b / \sim \le a / \sim$.\\
+        \item anti-symmetrisch: Seien $b / \sim \in A / \sim$ mit $a / \sim \le b / \sim$ und $b / \sim \le a / \sim$.\\
         Dann ist $a \preceq b$ und $b \preceq a$, das heißt $a \sim b$ und $a / \sim = b / \sim$
     \end{itemize}
 }
@@ -3455,7 +3456,7 @@ Aus einer Quasiordnung bekommt man eine Äquivalenzrelation:
 \ex Sei A die Menge der komplexen Zahlen und $z \preceq z' \iff |z| \le |z'|$. Es gilt: $z \sim z' \iff |z| = |z'|$.\\
 $\exists$ Bijektion: $\R_{\ge 0} \to \C / \sim: x \mapsto x / \sim$.\\
 Faktorordnung auf f: $\C / \sim \triangleq \le \text{ auf } \R$\\
-Dies lässt sich grafisch als Kreise um den Urpsrung darstellen, wobei dies die Äquivalenzklassen sind.
+Dies lässt sich grafisch als Kreise um den Ursprung darstellen, wobei dies die Äquivalenzklassen sind.
 
 \subsection{Ketten und Antiketten}
 
@@ -3516,7 +3517,7 @@ Sei $(A; \le)$ eine Menge mit partieller Ordnung.
         \item $|U| \le |V|$
         \item $\forall i \le |U|: U(i) = V(i)$
     \end{itemize}
-    Zum Beispiel ist "mathe" ein Präfix von "mathematik".\\
+    Zum Beispiel ist "Mathe" ein Präfix von "Mathematik".\\
     Das zugehörige Hasse-Diagramm ist ein unendlicher Baum.
 }
 
@@ -3543,7 +3544,7 @@ Es gibt
 \de{
     Seien $U, V \in A*$. Dann ist U ein Teilwort von V, wenn man U durch Wegstreichen von Buchstaben aus V erhält,\\
     d.h. $\exists 1 \leq i_1 \leq i_2 \leq \dots \leq i_{|U|} \leq |V|: U(j) = V(j)$ für $1 \leq j \leq |U|$\\
-    z.B. mathematik $\to$ \sout{m}at\sout{h}em\sout{atik} $\to$ atem
+    z.B. Mathematik $\to$ \sout{M}at\sout{h}em\sout{atik} $\to$ atem
 }
 
 \an{
@@ -3608,7 +3609,7 @@ Sei $w = a_1, \dots, a_{n-2}$ ein Wort in $\{1, \dots, n\}$
     \underline{$A_n$} ist die Aussage: Sei $|V| = n$. Dann ist jedes Wort in V der Länge $n-2$ ein Prüfercode genau eines Baumes mit Knotenmenge V.
 
     \underline{$n = 2$:} Klar, da es nur einen Baum mit zwei Knoten gibt.\\
-    \underline{$n \geq 3$:} Nach IV ist $a_1, \dots, a_{n-3}$ der Prüfercoe eines Baumes B' mit Knotenmenge $V \bs \{b_1\}$, wobei $b_1$ das kleinste Element von\\
+    \underline{$n \geq 3$:} Nach IV ist $a_1, \dots, a_{n-3}$ der Prüfercode eines Baumes B' mit Knotenmenge $V \bs \{b_1\}$, wobei $b_1$ das kleinste Element von\\
     $V \bs \{a_1, \dots, a_{n-3}\}$ ist.\\
     Die Blätter von B' sind $(V \bs \{b_1\}) \bs \{a_1, \dots, a_{n-3}\}$, d.h. $b_1$ ist kleiner als alle Blätter von B' $\iff B := (V, (B') \cup \{\{a_1, b_1\}\})$ hat den Prüfercode $a_1P(B')$.
 }
@@ -3721,7 +3722,7 @@ $\det(D-A)_{33} = \det(\begin{pmatrix}
 \pr{
     Es gibt zwei Arten von Spannbäumen:
     \begin{enumerate}
-        \item Die Spannbäume, die die Kante e entahlten: Wenn $e \in B$ und B ein Spannbaum von G ist, dann ist $B/e$ ein Spannbaum von $G/e$ und umgekehrt.
+        \item Die Spannbäume, die die Kante e enthalten: Wenn $e \in B$ und B ein Spannbaum von G ist, dann ist $B/e$ ein Spannbaum von $G/e$ und umgekehrt.
         \item Die Spannbäume, die die Kante e nicht enthalten: Das sind genau die Spannbäume von $G-e$.
     \end{enumerate}
 }
@@ -3853,7 +3854,7 @@ $\det(D-A)_{33} = \det(\begin{pmatrix}
 \end{itemize}
 
 \an{
-    Kanten in planaren Graphen können auch ausschließlich mit Strecken, statt durch Polygonzüge gezeichnet werden.
+    Kanten in planaren Graphen können auch mit Strecken, anstatt durch Polygonzüge gezeichnet werden.
 }
 
 \subsection{Eulersche Polyederformel}
@@ -3916,7 +3917,7 @@ $(a,b) \in R \iff \exists$ Polygonzug in M von a nach b.
     Dann können wir Kantenhinzufügen, der Graph ist also nicht maximal.\\
     \gray{Nach dem Prinzip: $(a \implies b) \iff (\n{a} \implies \n{b})$}
 
-    \underline{$\implies:$} Sei G eine Triangulierung: Wenn wir veruschen eine neue Kante zwischen zwei Knoten zu finden, so muss diese Kante in eine Fläche hinein- und hinausgehen, da alle Knoten, die in Kanten sind, die an dieser Fläche beteiligt sind, bereit Nachbarn sind.\\
+    \underline{$\implies:$} Sei G eine Triangulierung: Wenn wir versuchen eine neue Kante zwischen zwei Knoten zu finden, so muss diese Kante in eine Fläche hinein- und hinausgehen, da alle Knoten, die in Kanten sind, die an dieser Fläche beteiligt sind, bereit Nachbarn sind.\\
     Deshalb lässt sich keine Kante hinzufügen.
 }
 
@@ -3933,5 +3934,199 @@ $(a,b) \in R \iff \exists$ Polygonzug in M von a nach b.
 }
 
 \ex $K_5: |V| = 5, |E| = \frac{5 \cdot 4}{2} = 10 \ge 3 \cdot 5 - 6 = 9$
+
+\subsection{Minoren}
+
+\de{
+    Seien G und H endliche Multigraphen. Wir sagen H ist \red{Minor} von G, $H \preceq G$, falls eines der folgenden gilt:
+    \begin{itemize}
+        \item H ist isomorph zu G
+        \item H ist Subgraph von G
+        \item H entsteht aus G durch Kantenkontraktion: $H = G/e, e \in E(G)$
+        \item $\exists$ H' mit $H \preceq H'$ und $H' \preceq G$
+    \end{itemize}    
+    Das heißt, man erhält H aus G durch eine endliche Folge von
+    \begin{itemize}
+        \item Kantenlöschungen
+        \item Knotenlöschungen
+        \item Kantenkontraktionen
+        \item Umbenennungen
+    \end{itemize}
+}
+
+\ex $I_2 \preceq C_4 \preceq K_5 \preceq K_5$.
+
+Sei G eine Menge endlicher Multigraphen. Dann ist $\preceq$ eine Relation auf G. Sie ist eine Quasiordnung und $\preceq \cap \succeq =$ Isomorphie.
+
+\an{
+    Sei G ein planarer Graph und $H \preceq G$. Dann ist auch H planar. Wenn H nicht planar ist, dann ist auch G nicht planar.
+}
+
+\se{
+    Es gibt eine endliche Menge F von Graphen, sodass ein endlicher Graph genau dann planar ist, wenn keiner der Graphen in F ein Minor von ihm ist.
+}
+\an{
+    Eine solche Menge ist $F=\{K_5,K_{3,3}\}$.
+}
+\an{
+    Es gibt einen Algorithmus in polynomieller Zeit der mit einer solchen Menge F berechnen kann, ob ein Graph planar ist.
+}
+
+\ex $K_5 \preceq$ Petersengraph, also ist der Petersengraph nicht planar.
+
+\section{Polyeder}
+
+\de{
+    Eine Teilmenge $P \subseteq \R^n$ heißt \red{Polyeder}, falls P die Lösungsmenge von endlich vielen linearen Ungleichungen ist:
+    \[
+        P = \{x \in \R^n \st Ax \le b\} \text{ mit } A \in \R^{m \times n}, b \in \R^m,
+    \]
+    wobei $(c_1, \dots, c_n) \le (b_1, \dots, b_n) \iff \forall i \in \{1, \dots, n\}: c_i \le b_i$
+}
+
+\ex $\begin{pmatrix}
+    1 & 1\\
+    1 & -1\\
+    -1 & 0
+\end{pmatrix} \cdot \vvec{x}{y} \le \vvvec{1}{0}{0} \iff x + y \le 1, y \ge 0, x \ge 0$
+
+\de{
+    Polyeder sind \red{konvex}, das heißt $\forall x,y \in P: [x,y] \subset P$.   
+}
+
+Wir nehmen an: A,b sind minimal, das heißt wenn die i-te Zeile aus A und b gelöscht wird, dann wird das entsprechende Polyeder strikt größer.\\
+Dann ist der \red{Rand} von P die Menge aller $(x_1, \dots, x_n) \in P$ mit:
+\[
+    \exists i \in \{1, \dots, m\}: a_{i1}x_1 + \dots + a_{in}x_n = 0
+\]
+
+\de{
+    Ein Polyeder $P \subseteq \R^n$ heißt \red{beschränkt}, falls es ein $R > 0$ gibt mit $P \subseteq [-R, R]^n$.\\
+    Es heißt \red{n-dimensional}, falls $\exists \epsilon > 0, y \in P: y + [0,\epsilon]^n \subseteq P$.
+}
+
+\subsection{stereographische Projektion}
+
+Sei $P \in \R^3$ beschränkt und drei-dimensional. Dann besteht der Rand von P aus Ecken, Kanten und Flächen. Die Ecken und Kanten definieren mithilfe der \red{"stereographischen Projektion einen Graphen"}.\\
+\gray{
+    Dabei werden die Ecken und Kanten des Polyeders vom Mittelpunkt des Polyeders auf eine Kugel projiziert. Von dort Wird die Kugeloberfläche von einem Punkt, der nicht im Schatten liegt auf eine Ebene projiziert.
+}
+
+\se{
+    Sei G der Kantengraph eines beschränkten, 3-dimensionalen Polyeders. Dann ist G planar und 3-fach zusammenhängend.
+}
+
+\ex $K_4$ ist planar und drei-fach zusammenhängend $\implies$ der zugehörige Polyeder ist ein Tetraeder.
+
+\newpage
+\subsection{Dualgraphen}
+
+\de{
+    Seien $G=(V,E,i), G'=(V',E',i')$ ebene Multigraphen mit\\
+    Flächenmengen F und F'.
+    Dann heißt G' dual zu G, falls\\
+    $\exists \alpha: F \to V', \exists \beta: E \to E', \exists \gamma: V \to F'$ Bijektionen mit:
+    \begin{itemize}
+        \item $\forall f\in F: \alpha(f) \in F$
+        \item $\forall v \in V: v \in \gamma(v)$
+        \item $\forall e \in E: |\beta(e) \cap \bigcup_{e' \in E}e'| = |e \cap \beta(e)| = |e \cap \bigcup_{e' \in E'}e| = 1$
+    \end{itemize}
+    Das heißt, dass jede Kante $e' \in E$ genau eine Kanten aus G' in genau einem Punkt schneidet schneidet und umgekehrt.
+}
+
+\se{
+    Wenn G' der Dualgraph von G ist, dann ist G der Dualgraph von G'. ($(G')'=G$)
+}
+
+\prop{
+    Zwei Dualgraphen von G sind isomorph zueinander
+}
+
+\se{
+    Eine beliebige Landkarte in $\R^2$ (keine Meere, alle Länder zusammenhängend) lässt sich mit vier Farben so einfärben, dass benachbarte Länder verschiedene Farben haben.
+}
+\gray{
+    Dies war das erste große Problem, dass mit Computern gelößt wurde. Dabei wurde die äquivalente Formulierung genutzt, dass jeder planare Graph (der sich über den Dualgraphen herausfinden lässt) vierfärbbar ist.
+}
+
+\newpage
+\section{Gerichtete Graphen}
+
+\de{
+    Ein \red{gerichteter Graph} ist ein Paar (V,E) mit $E \in V \times V$, das heißt eine binäre Relation auf V.
+    \begin{itemize}
+        \item $(v,w) \in E \iff$ v ist \red{Vorgänger} von w $\iff$ w ist \red{Nachfolger} von v.
+        \item \red{gerichteter Pfad}: $(v_1, \dots, v_n) \in V^n:$\\
+        $\forall 1 \le i < n: (v_i, v_{i+1}) \in E$
+    \end{itemize}
+}
+\de{
+    Die \red{Erreichbarkeitsrelation} auf V ist eine Quasiordnung mit:
+    \[
+        V: v \preceq w \iff \exists \text{ gerichteter Pfad von v nach w}
+    \]
+    Diese Quasiordnung ist nicht antisymmetrisch, also keine partielle Ordnung.
+}
+\de{
+    Eine \red{starke Zusammenhangskomponente} von G ist eine\\
+    Äquivalenzklasse von $\sim := \preceq \cap \succeq$.
+}
+
+\subsection{Tiefensuche}
+
+\underline{Algorithmus:} DFS(v)\\
+\underline{Eingabe:} $G=(V,E)$ als gerichteter Graph und $v \in V$\\
+\underline{Aufgaben:} \begin{enumerate}
+    \item Markiere alle $w \in V$ mit $v \preceq w$.
+    \item Gebe alle markierten Knoten aus.
+\end{enumerate}
+\underline{Algorithumus:} \begin{enumerate}
+    \item Markiere v
+    \item Für alle w mit $(v,w) \in E$:
+    \begin{itemize}
+        \item Falls w noch nicht markiert: DFS(w)
+    \end{itemize}
+    \item Gebe v aus.
+\end{enumerate}
+
+Falls G nicht stark zusammenhängend ist, gibt DFS nicht immer alle Knoten aus.
+
+\newpage
+\de{
+    Die \red{vollständige Tiefensuche} ruft die DFS mit einem unmarkierten Knoten auf bis alle Knoten markiert sind. Das Ergebnis sind totale Ordnungen auf V:
+    \begin{itemize}
+        \item Knotenpräordnung: Reihenfolge, in der die Knoten markiert werden
+        \item Knotenpostordnung: Reihenfolge, in der die Knoten\\
+        ausgegeben werden
+    \end{itemize}
+    \gray{
+        Die Ordnungen sind abhängig von der Reihenfolge der Knoten die für die Tiefensuche als Startknoten gewählt werden.
+    }
+}
+
+Es gibt vier Arten von Knoten:
+\begin{itemize}
+    \item Baumkanten, entlang denen die vollständige Tiefensuche geht. Sie bilden den Tiefensuchwald.
+    \item Vorwärtskanten verbinden Knoten w mit einem $v \preceq w$ im Tiefensuchwald. Sie springen also mehrere Baumkanten nach vorne.
+    \item Rückwärtskanten verbinden Knoten w mit einem $w \prec v$ im Tiefensuchwald. Sie springen also mehrere Baumkanten zurück.
+    \item Querkanten sind alle anderen Kanten, also Kanten die zwischen Bäumen oder unterschiedlichen "Ästen" eines Baumes sind.
+\end{itemize}
+
+\an{
+    Eine Querkante zwischen zwei verschiedenen Bäumen des Tiefensuchenwaldes geht immer vom später besuchten zum früher besuchten.\\
+    Schliefen sind die einzigen Knoten die gleichzeitig vorwärts und rückwärts sind.
+}
+
+\subsection{Finden von starken Zusammenhangskomponenten}
+
+\underline{Eingabe:} $G=(V,E)$\\
+\underline{Algorithmus:} Beschrifte Kanten gemäß starker Zusammenhangskomponente: \begin{enumerate}
+    \item Sei z=1 eine Zählvariable
+    \item Führe vollständige Tiefensuche durch.
+    \item Sei v der unbeschriftete Knoten mit der größten Schlusszeit
+    \item Führe DSF(v) auf $G^{-1} := (V, \{(v,w)\} \st (w,v) \in E)$ durch und beschrifte alle erreichten Knoten mit z.
+    \item Erhöhe z um 1.
+    \item Falls nicht alle Knoten beschriftet sind, gehe zu Schritt 2.
+\end{enumerate}
 
 \end{document}
